@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "GameState.h"
 
 class Game
 {
@@ -10,6 +11,7 @@ public:
 	Game();
 	~Game();
 	void run();
+	void changeState(int state);
 
 private:
 	sf::Clock clock;
@@ -17,11 +19,12 @@ private:
 	sf::Time timePerFrame;
 	sf::RenderWindow window;
 
+	GameState *currentState;
+	
 private:
-	void update();
 	void handleEvent();
+	void update();
 	void render();
-
 
 };
 

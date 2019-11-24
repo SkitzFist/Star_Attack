@@ -1,5 +1,7 @@
 #include "Game.h"
 #include <ctime>
+#include <stdexcept>
+#include <iostream>
 
 #ifdef _DEBUG
 #pragma comment(lib, "sfml-window-d.lib")
@@ -17,7 +19,19 @@ int main()
 	srand((unsigned)time(0));
 
 	Game game;
-	game.run();
+	try
+	{
+		game.run();
+
+	}
+	catch (const std::runtime_error &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch (...) {
+		std::cerr << "Unknown Error" << std::endl;
+	}
+	
 
 	return 0;
 }

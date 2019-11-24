@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Game States">
+      <UniqueIdentifier>{cfc24d01-3790-45d2-8da9-4026e94d3d7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game States\Menu State">
+      <UniqueIdentifier>{5061cee4-fd56-48d3-9853-11f53e0b5538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game States\Play State">
+      <UniqueIdentifier>{07cd138e-ea54-43c1-9293-8fae6d482e77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,10 +30,28 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Game States</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuState.cpp">
+      <Filter>Game States\Menu State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayState.cpp">
+      <Filter>Game States\Play State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Game States</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuState.h">
+      <Filter>Game States\Menu State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayState.h">
+      <Filter>Game States\Play State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,18 +1,21 @@
 #include "Game.h"
-
+#include "MenuState.h"
+#include "PlayState.h"
 
 
 Game::Game():
-	window(sf::VideoMode(WIDTH, HEIGHT), "THE BEST GAME EVER"),
+	window(sf::VideoMode(WIDTH, HEIGHT), "Star Attack"),
 	timePerFrame(sf::seconds(1.0f / 60.0f)),
-	elapsedTimeSinceLastUpdate(sf::Time::Zero)
+	elapsedTimeSinceLastUpdate(sf::Time::Zero),
+	currentState(nullptr)
 {
-
+	currentState = new MenuState();
 }
 
 
 Game::~Game()
 {
+	delete currentState;
 }
 
 void Game::run()
@@ -25,14 +28,9 @@ void Game::run()
 	}
 }
 
-void Game::update()
+void Game::changeState(int state)
 {
-	elapsedTimeSinceLastUpdate += clock.restart();
-	if (elapsedTimeSinceLastUpdate > timePerFrame) {
 
-		elapsedTimeSinceLastUpdate -= timePerFrame;
-
-	}
 }
 
 void Game::handleEvent()
@@ -44,12 +42,25 @@ void Game::handleEvent()
 			event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape) {
 			window.close();
 		}
-
+		currentState = currentState->handleEvent(event);
 	}
 }
+
+void Game::update()
+{
+	elapsedTimeSinceLastUpdate += clock.restart();
+
+	if (elapsedTimeSinceLastUpdate > timePerFrame) {
+
+		currentState = currentState->update(elapsedTimeSinceLastUpdate);
+		elapsedTimeSinceLastUpdate -= timePerFrame;
+	}
+}
+
 
 void Game::render()
 {
 	window.clear();
+	currentState->render(window);
 	window.display();
 }
