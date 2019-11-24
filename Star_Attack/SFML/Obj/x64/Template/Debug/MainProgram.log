@@ -1,0 +1,3 @@
+﻿  Basket.cpp
+d:\university\programmering 2\game_1\sfml\codepc\mainprogram\basket.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  MainProgram.vcxproj -> D:\University\Programmering 2\Game_1\SFML\CodePC\../Bin/x64/TemplateD.exe
