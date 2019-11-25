@@ -2,28 +2,30 @@
 
 
 
-PlayState::PlayState()
+PlayState::PlayState(ResourceManager* rm):
+	GameState(rm)
 {
-	std::cout << "In play state" << std::endl;
+	player = new Player(GameState::rm->getPlayerTexture());
 }
-
 
 PlayState::~PlayState()
 {
+
 }
 
 GameState* PlayState::handleEvent(const sf::Event & event)
 {
-
+	player->input(event);
 	return this;
 }
 
 GameState* PlayState::update(const sf::Time & delta)
 {
-
+	player->update(delta);
 	return this;
 }
 
-void PlayState::render(const sf::RenderWindow & window) const
+void PlayState::render(sf::RenderWindow & window) const
 {
+	window.draw(*player);
 }

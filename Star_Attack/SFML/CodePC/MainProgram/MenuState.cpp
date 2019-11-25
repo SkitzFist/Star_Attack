@@ -2,9 +2,14 @@
 #include "PlayState.h"
 
 
-MenuState::MenuState()
+MenuState::MenuState(ResourceManager* rm):
+	GameState(rm)
 {
-	std::cout << "In menu state" << std::endl;
+	text.setFont(*rm->getFont());
+	text.setPosition(100.f, 300.f);
+	text.setFillColor(sf::Color::White);
+	text.setCharacterSize(52);
+	text.setString("press space to start");
 }
 
 
@@ -18,7 +23,7 @@ GameState* MenuState::handleEvent(const sf::Event & event)
 
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space) {
 		delete state;
-		state = new PlayState();
+		state = new PlayState(rm);
 	}
 
 	return state;
@@ -29,6 +34,7 @@ GameState* MenuState::update(const sf::Time & delta)
 	return this;
 }
 
-void MenuState::render(const sf::RenderWindow & window) const
+void MenuState::render(sf::RenderWindow & window) const
 {
+	window.draw(text);
 }

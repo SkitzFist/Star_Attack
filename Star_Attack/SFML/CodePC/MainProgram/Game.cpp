@@ -9,13 +9,16 @@ Game::Game():
 	elapsedTimeSinceLastUpdate(sf::Time::Zero),
 	currentState(nullptr)
 {
-	currentState = new MenuState();
+	rm = new ResourceManager();
+	rm->setup();
+	currentState = new PlayState(rm);
 }
 
 
 Game::~Game()
 {
-	delete currentState;
+	delete rm;
+	delete currentState;	
 }
 
 void Game::run()
@@ -25,12 +28,8 @@ void Game::run()
 		handleEvent();
 		update();
 		render();
+		window.setFramerateLimit(60);
 	}
-}
-
-void Game::changeState(int state)
-{
-
 }
 
 void Game::handleEvent()

@@ -1,0 +1,6 @@
+﻿1>------ Build started: Project: Template, Configuration: Debug x64 ------
+1>Player.cpp
+1>c:\users\joper\documents\star_attack\star_attack\sfml\codepc\mainprogram\player.cpp(112): warning C4715: 'Player::lerpMove': not all control paths return a value
+1>MainProgram.vcxproj -> C:\Users\JoPer\Documents\Star_Attack\Star_Attack\SFML\CodePC\../Bin/x64/TemplateD.exe
+1>Done building project "MainProgram.vcxproj".
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========

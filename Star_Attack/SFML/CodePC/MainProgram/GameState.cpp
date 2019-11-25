@@ -2,7 +2,8 @@
 
 
 
-GameState::GameState()
+GameState::GameState(ResourceManager* rm):
+	rm(rm)
 {
 	
 }

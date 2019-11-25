@@ -22,6 +22,15 @@
     <Filter Include="Game States\Play State">
       <UniqueIdentifier>{07cd138e-ea54-43c1-9293-8fae6d482e77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="UI Element">
+      <UniqueIdentifier>{034a1cd3-6f3f-4507-8a42-5bf3b0755f3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{9c6a9b9b-e6fd-49a6-bae3-3fdde29cf76b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Player">
+      <UniqueIdentifier>{00e9c65b-fa9a-4041-ab56-4054b4029753}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +48,18 @@
     <ClCompile Include="PlayState.cpp">
       <Filter>Game States\Play State</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="UiElement.cpp">
+      <Filter>UI Element</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Entities\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -52,6 +73,18 @@
     </ClInclude>
     <ClInclude Include="PlayState.h">
       <Filter>Game States\Play State</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="UiElement.h">
+      <Filter>UI Element</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Entities\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

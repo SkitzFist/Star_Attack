@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "GameState.h"
+#include "ResourceManager.h"
 
 class Game
 {
@@ -11,7 +12,6 @@ public:
 	Game();
 	~Game();
 	void run();
-	void changeState(int state);
 
 private:
 	sf::Clock clock;
@@ -20,7 +20,7 @@ private:
 	sf::RenderWindow window;
 
 	GameState *currentState;
-	
+	ResourceManager* rm;
 private:
 	void handleEvent();
 	void update();
