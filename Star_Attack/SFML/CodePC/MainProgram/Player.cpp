@@ -60,19 +60,6 @@ void Player::move()
 
 void Player::onKeyDown(sf::Keyboard::Key key)
 {
-	//if (key == sf::Keyboard::Up) {
-	//	goalVelY = -speed;
-	//}
-	//else if (key == sf::Keyboard::Down) {
-	//	goalVelY = speed;
-	//}
-
-	//if (key == sf::Keyboard::Right) {
-	//	goalVelX = speed;
-	//}
-	//else if (key == sf::Keyboard::Left) {
-	//	goalVelX = -speed;
-	//}
 	switch (key)
 	{
 	case sf::Keyboard::Up:
