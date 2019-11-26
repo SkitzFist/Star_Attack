@@ -4,6 +4,9 @@
 class ResourceManager
 {
 public:
+	static const int WINDOW_WIDTH = 1920;
+	static const int WINDOW_HEIGHT = 1080;
+public:
 	ResourceManager();
 	~ResourceManager();
 

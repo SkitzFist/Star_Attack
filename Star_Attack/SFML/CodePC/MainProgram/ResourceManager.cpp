@@ -39,7 +39,7 @@ void ResourceManager::setup()
 		throw std::runtime_error("Could not load player texture");
 	}
 	BossTexture = new sf::Texture();
-	if (!BossTexture->loadFromFile("../Sprites/player.png")) {
+	if (!BossTexture->loadFromFile("../Sprites/boss.png")) {
 		throw std::runtime_error("Could not load boss texture");
 	}
 }

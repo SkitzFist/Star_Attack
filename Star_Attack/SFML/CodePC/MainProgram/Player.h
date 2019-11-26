@@ -8,7 +8,7 @@ public:
 	virtual ~Player();
 
 	void input(const sf::Event &event);
-
+	void rotateTowards(const Entity &other);
 	// Inherited via Entity
 	virtual void update(sf::Time delta) override;
 	virtual void move() override;

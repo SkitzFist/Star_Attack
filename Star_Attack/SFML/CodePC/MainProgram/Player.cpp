@@ -35,6 +35,17 @@ void Player::input(const sf::Event & event)
 	}
 }
 
+void Player::rotateTowards(const Entity & other)
+{
+	sf::Vector2f dist = { 
+		other.getPosition().x - this->getPosition().x,
+		other.getPosition().y - this->getPosition().y
+	};
+	float angleRadian = atan2(dist.y, dist.x);
+
+	rotateSprite(angleRadian);
+}
+
 void Player::update(sf::Time delta)
 {
 	velY = lerpMove(goalVelY, velY, (float)delta.asMicroseconds());

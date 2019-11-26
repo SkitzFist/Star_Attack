@@ -31,6 +31,9 @@
     <Filter Include="Entities\Player">
       <UniqueIdentifier>{00e9c65b-fa9a-4041-ab56-4054b4029753}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Entities\Enemy">
+      <UniqueIdentifier>{71bf1cfd-7557-4f6c-aad2-852e29a9b324}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -60,6 +63,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>Entities\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Entities\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -85,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Entities\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
