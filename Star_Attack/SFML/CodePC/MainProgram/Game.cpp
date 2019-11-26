@@ -1,17 +1,17 @@
 #include "Game.h"
 #include "MenuState.h"
-#include "PlayState.h"
-
+#include <chrono>
+#include <thread>
 
 Game::Game():
-	window(sf::VideoMode(WIDTH, HEIGHT), "Star Attack"),
+	window(sf::VideoMode(WIDTH, HEIGHT), "Star Attack", sf::Style::Fullscreen),
 	timePerFrame(sf::seconds(1.0f / 60.0f)),
 	elapsedTimeSinceLastUpdate(sf::Time::Zero),
 	currentState(nullptr)
 {
 	rm = new ResourceManager();
 	rm->setup();
-	currentState = new PlayState(rm);
+	currentState = new MenuState(rm);
 }
 
 
@@ -28,7 +28,7 @@ void Game::run()
 		handleEvent();
 		update();
 		render();
-		window.setFramerateLimit(60);
+		std::this_thread::sleep_for(std::chrono::microseconds(timePerFrame.asMicroseconds()));
 	}
 }
 
@@ -48,9 +48,8 @@ void Game::handleEvent()
 void Game::update()
 {
 	elapsedTimeSinceLastUpdate += clock.restart();
-
 	if (elapsedTimeSinceLastUpdate > timePerFrame) {
-
+		
 		currentState = currentState->update(elapsedTimeSinceLastUpdate);
 		elapsedTimeSinceLastUpdate -= timePerFrame;
 	}

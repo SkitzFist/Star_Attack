@@ -2,18 +2,17 @@
 
 
 
-Player::Player(sf::Texture* texture):
+Player::Player(sf::Texture* texture) :
 	Entity(texture)
 {
 	setPosition(300.f, 300.f);
 
-	speed = 6.f;
+	speed = 10.5f;
 	velX = 0;
 	velY = 0;
 
 	goalVelX = 0;
 	goalVelY = 0;
-	isLerpMove = false;
 }
 
 
@@ -38,10 +37,8 @@ void Player::input(const sf::Event & event)
 
 void Player::update(sf::Time delta)
 {
-	if (isLerpMove) {
-		velY = lerpMove(goalVelY, velY, delta.asSeconds());
-		velX = lerpMove(goalVelX, velX, delta.asSeconds());
-	}
+	velY = lerpMove(goalVelY, velY, (float)delta.asMicroseconds());
+	velX = lerpMove(goalVelX, velX, (float)delta.asMicroseconds());
 	move();
 }
 
@@ -52,23 +49,26 @@ void Player::move()
 
 void Player::onKeyDown(sf::Keyboard::Key key)
 {
+	//if (key == sf::Keyboard::Up) {
+	//	goalVelY = -speed;
+	//}
+	//else if (key == sf::Keyboard::Down) {
+	//	goalVelY = speed;
+	//}
+
+	//if (key == sf::Keyboard::Right) {
+	//	goalVelX = speed;
+	//}
+	//else if (key == sf::Keyboard::Left) {
+	//	goalVelX = -speed;
+	//}
 	switch (key)
 	{
 	case sf::Keyboard::Up:
-		if (isLerpMove) {
-			goalVelY = -speed;
-		}
-		else {
-			velY = -speed;
-		}
+		goalVelY = -speed;
 		break;
 	case sf::Keyboard::Down:
-		if (isLerpMove) {
-			goalVelY = speed;
-		}
-		else {
-			velY = speed;
-		}
+		goalVelY = speed;
 		break;
 	default:
 		break;
@@ -77,28 +77,11 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 	switch (key)
 	{
 	case sf::Keyboard::Right:
-		if (isLerpMove) {
-			goalVelX = speed;
-		}
-		else {
-			velX = speed;
-		}
+		goalVelX = speed;
 		break;
 	case sf::Keyboard::Left:
-		if (isLerpMove) {
-			goalVelX = -speed;
-		}
-		else {
-			velX = -speed;
-		}
+		goalVelX = -speed;
 		break;
-	case sf::Keyboard::Space:
-		if (!isLerpMove) {
-			isLerpMove = true;
-		}
-		else {
-			isLerpMove = false;
-		}
 	default:
 		break;
 	}
@@ -108,59 +91,24 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 {
 	if (key == sf::Keyboard::Up && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down) ||
 		key == sf::Keyboard::Down && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		if (isLerpMove) {
-			goalVelY = 0;
-		}
-		else {
-			velY = 0;
-		}
-
+		goalVelY = 0;
 	}
 	else if (key == sf::Keyboard::Up && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		if (isLerpMove) {
-			goalVelY = speed;
-		}
-		else {
-			velY = speed;
-		}
-
+		goalVelY = speed;
 	}
 	else if (key == sf::Keyboard::Down && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		if (isLerpMove) {
-			goalVelY = -speed;
-		}
-		else {
-			velY = -speed;
-		}	
+		goalVelY = -speed;
 	}
 
 	if (key == sf::Keyboard::Right && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ||
 		key == sf::Keyboard::Left && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		if (isLerpMove) {
-			goalVelX = 0;
-		}
-		else {
-			velX = 0;
-		}
-
+		goalVelX = 0;
 	}
 	else if (key == sf::Keyboard::Left && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		if (isLerpMove) {
-			goalVelX = speed;
-		}
-		else {
-			velX = speed;
-		}
-
+		goalVelX = speed;
 	}
 	else if (key == sf::Keyboard::Right && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		if (isLerpMove) {
-			goalVelX = -speed;
-		}
-		else {
-			velX = -speed;
-		}
-	
+		goalVelX = -speed;
 	}
 }
 
@@ -171,7 +119,7 @@ float Player::lerpMove(float goal, float current, float delta)
 	if (difference > delta) {
 		return current + delta;
 	}
-	if (difference < -delta) {
+	else if (difference < -delta) {
 		return current - delta;
 	}
 	return goal;

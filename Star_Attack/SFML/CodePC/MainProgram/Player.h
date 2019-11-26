@@ -14,7 +14,6 @@ public:
 	virtual void move() override;
 
 private:
-	bool isLerpMove;
 	float speed;
 
 	float velX;

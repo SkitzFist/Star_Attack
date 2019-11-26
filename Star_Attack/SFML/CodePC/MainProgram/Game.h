@@ -6,8 +6,8 @@
 class Game
 {
 public:
-	static const int WIDTH = 900;
-	static const int HEIGHT = 600;
+	static const int WIDTH = 1920;
+	static const int HEIGHT = 1080;
 public:
 	Game();
 	~Game();

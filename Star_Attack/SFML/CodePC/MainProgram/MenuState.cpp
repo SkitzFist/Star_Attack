@@ -22,8 +22,8 @@ GameState* MenuState::handleEvent(const sf::Event & event)
 	GameState* state = this;
 
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space) {
-		delete state;
 		state = new PlayState(rm);
+		delete this;
 	}
 
 	return state;

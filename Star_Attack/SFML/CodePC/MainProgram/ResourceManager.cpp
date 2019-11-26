@@ -8,7 +8,9 @@ ResourceManager::ResourceManager()
 
 ResourceManager::~ResourceManager()
 {
-	
+	delete font;
+	delete playerTexture;
+	delete BossTexture;
 }
 
 sf::Font * ResourceManager::getFont()

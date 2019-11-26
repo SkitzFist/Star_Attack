@@ -10,7 +10,7 @@ PlayState::PlayState(ResourceManager* rm):
 
 PlayState::~PlayState()
 {
-
+	delete player;
 }
 
 GameState* PlayState::handleEvent(const sf::Event & event)
