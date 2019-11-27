@@ -46,11 +46,26 @@ void Player::rotateTowards(const Entity & other)
 	rotateSprite(angleRadian);
 }
 
+void Player::boundToWindow(ResourceManager * rm)
+{
+	if (getPosition().x - getBounds().width / 2 < 0) {
+		setPosition(0 + getBounds().width / 2, getPosition().y);
+	}
+	else if (getPosition().x + getBounds().width / 2 > rm->WINDOW_WIDTH) { 
+		setPosition(rm->WINDOW_WIDTH - getBounds().width / 2, getPosition().y);
+	}
+
+	if (getPosition().y - getBounds().height / 2 < 0) {
+		setPosition(getPosition().x, 0 + getBounds().height / 2);
+	}
+	else if (getPosition().y + getBounds().height / 2 > rm->WINDOW_HEIGHT) {
+		setPosition(getPosition().x, rm->WINDOW_HEIGHT - getBounds().height / 2);
+	}
+}
+
 void Player::update(sf::Time delta)
 {
-	velY = lerpMove(goalVelY, velY, (float)delta.asMicroseconds());
-	velX = lerpMove(goalVelX, velX, (float)delta.asMicroseconds());
-	move();
+	engageMove(delta);
 }
 
 void Player::move()
@@ -108,6 +123,13 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 	else if (key == sf::Keyboard::Right && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		goalVelX = -speed;
 	}
+}
+
+void Player::engageMove(sf::Time delta)
+{
+	velY = lerpMove(goalVelY, velY, (float)delta.asMicroseconds());
+	velX = lerpMove(goalVelX, velX, (float)delta.asMicroseconds());
+	move();
 }
 
 float Player::lerpMove(float goal, float current, float delta)

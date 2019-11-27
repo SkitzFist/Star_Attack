@@ -1,7 +1,2 @@
-﻿  Enemy.cpp
-  Entity.cpp
-  MenuState.cpp
-  PlayState.cpp
-  Player.cpp
-  Generating Code...
+﻿  PlayState.cpp
   MainProgram.vcxproj -> C:\Users\JoPer\Documents\Star_Attack\Star_Attack\SFML\CodePC\../Bin/x64/TemplateD.exe
