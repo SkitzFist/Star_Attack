@@ -1,6 +1,8 @@
 #pragma once
 #include "Entity.h"
 #include "ResourceManager.h"
+#include "PlayerWeapon.h"
+
 class Player :
 	public Entity
 {
@@ -23,6 +25,9 @@ private:
 
 	float velY;
 	float goalVelY;
+
+	PlayerWeapon* weapon;
+	bool isShooting;
 private:
 	void onKeyDown(sf::Keyboard::Key key);
 	void onKeyUp(sf::Keyboard::Key key);

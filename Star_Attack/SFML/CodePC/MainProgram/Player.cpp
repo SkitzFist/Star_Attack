@@ -3,21 +3,28 @@
 
 
 Player::Player(sf::Texture* texture) :
-	Entity(texture)
+	Entity(texture),
+	isShooting(false)
 {
-	setPosition(300.f, 300.f);
-
+	//config
+	float startX = 300.f;
+	float startY = 300.f;
 	speed = 10.5f;
+	float timeBetweenShots = 1.f;
+
+	//Init
+	setPosition(startX, startY);
 	velX = 0;
 	velY = 0;
-
 	goalVelX = 0;
 	goalVelY = 0;
+	weapon = new PlayerWeapon(timeBetweenShots);
 }
 
 
 Player::~Player()
 {
+	delete weapon;
 }
 
 void Player::input(const sf::Event & event)
@@ -66,6 +73,11 @@ void Player::boundToWindow(ResourceManager * rm)
 void Player::update(sf::Time delta)
 {
 	engageMove(delta);
+	weapon->update(delta);
+	if (weapon->getTimeLeft() <= 0 && isShooting) {
+		std::cout << "IsShooting" << std::endl;
+		weapon->fire();
+	}
 }
 
 void Player::move()
@@ -98,6 +110,11 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 	default:
 		break;
 	}
+
+	if (key == sf::Keyboard::Space) {
+		isShooting = true;
+	}
+
 }
 
 void Player::onKeyUp(sf::Keyboard::Key key)
@@ -122,6 +139,10 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 	}
 	else if (key == sf::Keyboard::Right && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		goalVelX = -speed;
+	}
+
+	if (key == sf::Keyboard::Space) {
+		isShooting = false;
 	}
 }
 

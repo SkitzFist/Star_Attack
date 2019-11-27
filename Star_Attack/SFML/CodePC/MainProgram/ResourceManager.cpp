@@ -12,7 +12,6 @@ ResourceManager::~ResourceManager()
 	delete playerTexture;
 	delete BossTexture;
 }
-
 sf::Font * ResourceManager::getFont()
 {
 	return font;

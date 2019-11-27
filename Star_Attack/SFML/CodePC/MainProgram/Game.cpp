@@ -4,13 +4,15 @@
 #include <thread>
 
 Game::Game():
-	window(sf::VideoMode(WIDTH, HEIGHT), "Star Attack", sf::Style::Fullscreen),
 	timePerFrame(sf::seconds(1.0f / 60.0f)),
 	elapsedTimeSinceLastUpdate(sf::Time::Zero),
 	currentState(nullptr)
 {
 	rm = new ResourceManager();
 	rm->setup();
+
+	window.create(sf::VideoMode(rm->WINDOW_WIDTH, rm->WINDOW_HEIGHT), "Star Attack");
+
 	currentState = new MenuState(rm);
 }
 
@@ -49,9 +51,9 @@ void Game::update()
 {
 	elapsedTimeSinceLastUpdate += clock.restart();
 	if (elapsedTimeSinceLastUpdate > timePerFrame) {
-		
-		currentState = currentState->update(elapsedTimeSinceLastUpdate);
+		currentState = currentState->update(timePerFrame); //Todo: Look into delta time
 		elapsedTimeSinceLastUpdate -= timePerFrame;
+
 	}
 }
 

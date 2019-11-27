@@ -34,6 +34,15 @@
     <Filter Include="Entities\Enemy">
       <UniqueIdentifier>{71bf1cfd-7557-4f6c-aad2-852e29a9b324}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Weapons">
+      <UniqueIdentifier>{af8c1c15-dbd7-4523-99b2-5cb93ee80202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Bullets">
+      <UniqueIdentifier>{28b5c7f4-7b27-444e-8cfe-2f17f34a7cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapons\Player">
+      <UniqueIdentifier>{3b439929-d4f7-4a02-8087-3f12104859e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,6 +75,15 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Entities\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Entities\Bullets</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerWeapon.cpp">
+      <Filter>Weapons\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -94,6 +112,15 @@
     </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Entities\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Entities\Bullets</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerWeapon.h">
+      <Filter>Weapons\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
