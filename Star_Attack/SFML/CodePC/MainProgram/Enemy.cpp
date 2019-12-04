@@ -14,10 +14,10 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::update(sf::Time delta)
+void Enemy::updateObject(sf::Time delta)
 {
 }
 
-void Enemy::move()
+void Enemy::moveObject()
 {
 }

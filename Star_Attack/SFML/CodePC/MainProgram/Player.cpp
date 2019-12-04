@@ -10,7 +10,7 @@ Player::Player(sf::Texture* texture) :
 	float startX = 300.f;
 	float startY = 300.f;
 	speed = 10.5f;
-	float timeBetweenShots = 1.f;
+	float timeBetweenShots = 0.3f;
 
 	//Init
 	setPosition(startX, startY);
@@ -49,7 +49,7 @@ void Player::rotateTowards(const Entity & other)
 		other.getPosition().y - this->getPosition().y
 	};
 	float angleRadian = atan2(dist.y, dist.x);
-
+	
 	rotateSprite(angleRadian);
 }
 
@@ -70,7 +70,7 @@ void Player::boundToWindow(ResourceManager * rm)
 	}
 }
 
-void Player::update(sf::Time delta)
+void Player::updateObject(sf::Time delta)
 {
 	engageMove(delta);
 	weapon->update(delta);
@@ -80,7 +80,7 @@ void Player::update(sf::Time delta)
 	}
 }
 
-void Player::move()
+void Player::moveObject()
 {
 	moveSprite(velX, velY);
 }

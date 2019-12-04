@@ -14,6 +14,7 @@ Bullet::~Bullet()
 
 void Bullet::update(sf::Time delta)
 {
+	
 }
 
 void Bullet::move()

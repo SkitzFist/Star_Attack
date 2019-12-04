@@ -43,6 +43,9 @@
     <Filter Include="Weapons\Player">
       <UniqueIdentifier>{3b439929-d4f7-4a02-8087-3f12104859e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObjects">
+      <UniqueIdentifier>{d69f2c6b-0976-40df-911c-e618bd93019d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -84,6 +87,9 @@
     <ClCompile Include="PlayerWeapon.cpp">
       <Filter>Weapons\Player</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -121,6 +127,9 @@
     </ClInclude>
     <ClInclude Include="PlayerWeapon.h">
       <Filter>Weapons\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

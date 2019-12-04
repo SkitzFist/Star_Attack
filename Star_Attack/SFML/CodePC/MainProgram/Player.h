@@ -14,8 +14,8 @@ public:
 	void rotateTowards(const Entity &other);
 	void boundToWindow(ResourceManager* rm);
 	// Inherited via Entity
-	virtual void update(sf::Time delta) override;
-	virtual void move() override;
+	virtual void updateObject(sf::Time delta) override;
+	virtual void moveObject() override;
 
 private:
 	float speed;

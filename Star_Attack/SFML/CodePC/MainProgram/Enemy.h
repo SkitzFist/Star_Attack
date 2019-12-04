@@ -8,7 +8,7 @@ public:
 	virtual ~Enemy();
 
 	// Inherited via Entity
-	virtual void update(sf::Time delta) override;
-	virtual void move() override;
+	virtual void updateObject(sf::Time delta) override;
+	virtual void moveObject() override;
 };
 
