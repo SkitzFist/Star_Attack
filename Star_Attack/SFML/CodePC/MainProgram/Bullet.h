@@ -1,7 +1,8 @@
 #pragma once
 #include "Entity.h"
+#include "ResourceManager.h"
 class Bullet :
-	public Entity
+	public GameObject
 {
 public:
 	Bullet(sf::Texture* texture);
@@ -10,5 +11,9 @@ public:
 	// Inherited via Entity
 	virtual void update(sf::Time delta) override;
 	virtual void move() override;
+	void setWindow(ResourceManager* rm);
+
+private:
+	ResourceManager* rm;
 };
 
