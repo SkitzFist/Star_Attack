@@ -2,8 +2,10 @@
 
 
 
-Weapon::Weapon(float timeBetweenShots):
-	timeBetweenShots(timeBetweenShots)
+Weapon::Weapon(float timeBetweenShots, ResourceManager* rm, BulletHandler* bh):
+	timeBetweenShots(timeBetweenShots),
+	rm(rm),
+	bh(bh)
 {
 }
 

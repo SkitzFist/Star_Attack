@@ -2,19 +2,15 @@
 
 
 
-GameObject::GameObject()
+GameObject::GameObject(sf::Texture* texture)
 {
+	sprite.setTexture(*texture);
+	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 }
 
 
 GameObject::~GameObject()
 {
-}
-
-void GameObject::setTexture(sf::Texture * texture)
-{
-	sprite.setTexture(*texture);
-	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 }
 
 void GameObject::draw(sf::RenderTarget & target, sf::RenderStates states) const

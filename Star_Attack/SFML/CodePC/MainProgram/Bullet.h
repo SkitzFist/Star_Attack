@@ -7,13 +7,16 @@ class Bullet :
 public:
 	Bullet(sf::Texture* texture);
 	virtual ~Bullet();
+	int getId() const;
+	void setup(sf::Vector2f dir);
 
 	// Inherited via Entity
 	virtual void update(sf::Time delta) override;
 	virtual void move() override;
-	void setWindow(ResourceManager* rm);
 
 private:
-	ResourceManager* rm;
+	sf::Vector2f dir;
+	int id;
+	float speed;
 };
 

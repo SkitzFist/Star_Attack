@@ -2,9 +2,13 @@
 
 
 
-Bullet::Bullet(sf::Texture* texture)
+Bullet::Bullet(sf::Texture* texture):
+	GameObject(texture)
 {
-	setTexture(texture);
+	//config
+	dir = { 0.f,0.f };
+	id = 0;
+	speed = 5.f;
 }
 
 
@@ -12,22 +16,22 @@ Bullet::~Bullet()
 {
 }
 
+int Bullet::getId() const
+{
+	return id;
+}
+
+void Bullet::setup(sf::Vector2f dir)
+{
+	this->dir = dir;
+}
+
 void Bullet::update(sf::Time delta)
 {
-	if (getPosition().x < -4 ||
-		getPosition().x > rm->WINDOW_WIDTH + 4 ||
-		getPosition().y <  -4 ||
-		getPosition().y > rm->WINDOW_HEIGHT + 4) {
-		
-		delete this;
-	}
+	move();
 }
 
 void Bullet::move()
 {
-}
-
-void Bullet::setWindow(ResourceManager* rm)
-{
-	this->rm = rm;
+	moveSprite(dir, speed);
 }

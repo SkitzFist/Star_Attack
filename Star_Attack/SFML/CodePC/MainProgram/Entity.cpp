@@ -2,9 +2,10 @@
 
 
 
-Entity::Entity(sf::Texture* texture)
+Entity::Entity(sf::Texture* texture):
+	GameObject(texture)
 {
-	setTexture(texture);
+	
 }
 
 

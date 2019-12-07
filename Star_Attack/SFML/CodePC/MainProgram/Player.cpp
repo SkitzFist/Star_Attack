@@ -2,9 +2,10 @@
 
 
 
-Player::Player(sf::Texture* texture) :
+Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Enemy* enemy) :
 	Entity(texture),
-	isShooting(false)
+	isShooting(false),
+	enemy(enemy)
 {
 	//config
 	float startX = 300.f;
@@ -18,7 +19,7 @@ Player::Player(sf::Texture* texture) :
 	velY = 0;
 	goalVelX = 0;
 	goalVelY = 0;
-	weapon = new PlayerWeapon(timeBetweenShots);
+	weapon = new PlayerWeapon(timeBetweenShots, rm, bh);
 }
 
 
@@ -44,12 +45,12 @@ void Player::input(const sf::Event & event)
 
 void Player::rotateTowards(const Entity & other)
 {
-	sf::Vector2f dist = { 
+	sf::Vector2f dist = {
 		other.getPosition().x - this->getPosition().x,
 		other.getPosition().y - this->getPosition().y
 	};
 	float angleRadian = atan2(dist.y, dist.x);
-	
+
 	rotateSprite(angleRadian);
 }
 
@@ -58,7 +59,7 @@ void Player::boundToWindow(ResourceManager * rm)
 	if (getPosition().x - getBounds().width / 2 < 0) {
 		setPosition(0 + getBounds().width / 2, getPosition().y);
 	}
-	else if (getPosition().x + getBounds().width / 2 > rm->WINDOW_WIDTH) { 
+	else if (getPosition().x + getBounds().width / 2 > rm->WINDOW_WIDTH) {
 		setPosition(rm->WINDOW_WIDTH - getBounds().width / 2, getPosition().y);
 	}
 
@@ -75,8 +76,8 @@ void Player::updateObject(sf::Time delta)
 	engageMove(delta);
 	weapon->update(delta);
 	if (weapon->getTimeLeft() <= 0 && isShooting) {
-		std::cout << "IsShooting" << std::endl;
-		weapon->fire();
+		
+		shoot();
 	}
 }
 
@@ -112,7 +113,9 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 	}
 
 	if (key == sf::Keyboard::Space) {
+
 		isShooting = true;
+
 	}
 
 }
@@ -164,4 +167,19 @@ float Player::lerpMove(float goal, float current, float delta)
 		return current - delta;
 	}
 	return goal;
+}
+
+void Player::shoot()
+{
+	sf::Vector2f delta = {
+			enemy->getPosition().x - this->getPosition().x,
+			enemy->getPosition().y - this->getPosition().y
+	};
+	float magnitude = sqrt(delta.x * delta.x + delta.y * delta.y);
+
+	sf::Vector2f dir = {
+		delta.x / magnitude,
+		delta.y / magnitude
+	};
+	weapon->fire(getPosition(), dir);
 }

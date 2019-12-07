@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "BulletHandler.h"
 
 class PlayState :
 	public GameState
@@ -16,6 +17,7 @@ public:
 	virtual void render(sf::RenderWindow & window) const override;
 
 private:
+	BulletHandler* bh;
 	Player* player;
 	Enemy* enemy;
 };

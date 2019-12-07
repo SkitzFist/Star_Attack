@@ -5,8 +5,7 @@
 Enemy::Enemy(sf::Texture* texture, float x, float y):
 	Entity(texture)
 {
-	setPosition(x / 2 - getBounds().width, y / 2 - getBounds().height);
-	
+	setPosition(x / 2, y / 2);
 }
 
 

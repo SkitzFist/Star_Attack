@@ -1,13 +1,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include "ResourceManager.h"
 
 class GameObject : public sf::Drawable
 {
 public:
-	GameObject();
+	GameObject(sf::Texture* texture);
 	~GameObject();
-	void setTexture(sf::Texture* texture);
+
 	virtual void update(sf::Time delta) = 0;
 	virtual void move() = 0;
 	void setPosition(float x, float y);
@@ -24,6 +24,5 @@ public:
 
 private:
 	sf::Sprite sprite;
-
 };
 
