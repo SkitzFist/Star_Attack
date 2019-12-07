@@ -9,7 +9,7 @@ public:
 	virtual ~Bullet();
 	int getId() const;
 	void setup(sf::Vector2f dir);
-
+	bool isColliding(const GameObject &go);
 	// Inherited via Entity
 	virtual void update(sf::Time delta) override;
 	virtual void move() override;

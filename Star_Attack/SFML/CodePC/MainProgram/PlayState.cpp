@@ -25,7 +25,6 @@ GameState* PlayState::handleEvent(const sf::Event & event)
 
 GameState* PlayState::update(const sf::Time & delta)
 {
-
 	player->rotateTowards(*enemy);
 	player->updateObject(delta);
 	player->boundToWindow(rm);

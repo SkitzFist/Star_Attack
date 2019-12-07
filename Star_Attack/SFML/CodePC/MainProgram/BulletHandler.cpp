@@ -23,7 +23,8 @@ void BulletHandler::update(sf::Time delta)
 {
 	for (int i = 0; i < nrOf; ++i) {
 		bullets[i]->update(delta);
-		if (bullets[i]->getPosition().x < -10 || bullets[i]->getPosition().x > 1920 ||
+
+		if (bullets[i]->getPosition().x < -10 || bullets[i]->getPosition().x > 1920 || //TODO:: remove hardcoded values
 			bullets[i]->getPosition().y < -10 || bullets[i]->getPosition().y > 1920) {
 			removeBullet(i);
 		}
@@ -37,14 +38,16 @@ void BulletHandler::render(sf::RenderWindow &window)
 	}
 }
 
-bool BulletHandler::isColliding(const Entity & entity)
+bool BulletHandler::isColliding(const GameObject & go)
 {
 	bool isColliding = false;
 
-	//for (int i = 0; i < nrOf; ++i) {
-	//	if()
-	//}
-
+	for (int i = 0; i < nrOf; ++i) {
+		if (bullets[i]->isColliding(go)) {
+			removeBullet(i);
+			isColliding = true;
+		}
+	}
 	return isColliding;
 }
 

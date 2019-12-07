@@ -53,7 +53,6 @@ void Game::update()
 	if (elapsedTimeSinceLastUpdate > timePerFrame) {
 		currentState = currentState->update(timePerFrame); //Todo: Look into delta time
 		elapsedTimeSinceLastUpdate -= timePerFrame;
-
 	}
 }
 

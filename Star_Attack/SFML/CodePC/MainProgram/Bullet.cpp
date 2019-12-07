@@ -26,6 +26,15 @@ void Bullet::setup(sf::Vector2f dir)
 	this->dir = dir;
 }
 
+bool Bullet::isColliding(const GameObject & go)
+{
+	bool isColliding = false;
+	if (getBounds().intersects(go.getBounds())) {
+		isColliding = true;
+	}
+	return false;
+}
+
 void Bullet::update(sf::Time delta)
 {
 	move();
