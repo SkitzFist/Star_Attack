@@ -1,5 +1,5 @@
 #include "BulletHandler.h"
-
+#include "ResourceManager.h"
 
 
 BulletHandler::BulletHandler()
@@ -7,6 +7,7 @@ BulletHandler::BulletHandler()
 	//config
 	capacity = 60;
 	nrOf = 0;
+	offset = 10.f;
 	bullets = new Bullet*[capacity] { nullptr };
 
 }
@@ -19,13 +20,14 @@ BulletHandler::~BulletHandler()
 	delete[] bullets;
 }
 
-void BulletHandler::update(sf::Time delta)
+void BulletHandler::update(sf::Time delta, ResourceManager* rm)
 {
+	offset = 10.f;
 	for (int i = 0; i < nrOf; ++i) {
 		bullets[i]->update(delta);
 
-		if (bullets[i]->getPosition().x < -10 || bullets[i]->getPosition().x > 1920 || //TODO:: remove hardcoded values
-			bullets[i]->getPosition().y < -10 || bullets[i]->getPosition().y > 1920) {
+		if (bullets[i]->getPosition().x < 0 - offset || bullets[i]->getPosition().x > rm->getWindowWidth() + offset || //TODO:: remove hardcoded values
+			bullets[i]->getPosition().y < 0 - offset || bullets[i]->getPosition().y > rm->getWindowHeight() + offset) {
 			removeBullet(i);
 		}
 	}

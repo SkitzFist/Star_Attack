@@ -59,15 +59,15 @@ void Player::boundToWindow(ResourceManager * rm)
 	if (getPosition().x - getBounds().width / 2 < 0) {
 		setPosition(0 + getBounds().width / 2, getPosition().y);
 	}
-	else if (getPosition().x + getBounds().width / 2 > rm->WINDOW_WIDTH) {
-		setPosition(rm->WINDOW_WIDTH - getBounds().width / 2, getPosition().y);
+	else if (getPosition().x + getBounds().width / 2 > rm->getWindowWidth()) {
+		setPosition(rm->getWindowWidth() - getBounds().width / 2, getPosition().y);
 	}
 
 	if (getPosition().y - getBounds().height / 2 < 0) {
 		setPosition(getPosition().x, 0 + getBounds().height / 2);
 	}
-	else if (getPosition().y + getBounds().height / 2 > rm->WINDOW_HEIGHT) {
-		setPosition(getPosition().x, rm->WINDOW_HEIGHT - getBounds().height / 2);
+	else if (getPosition().y + getBounds().height / 2 > rm->getWindowHeight()) {
+		setPosition(getPosition().x, rm->getWindowHeight() - getBounds().height / 2);
 	}
 }
 

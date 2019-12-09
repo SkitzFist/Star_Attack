@@ -14,6 +14,11 @@ Weapon::~Weapon()
 {
 }
 
+void Weapon::update(sf::Time delta)
+{
+	timeLeft -= delta.asSeconds();
+}
+
 float Weapon::getTimeLeft() const
 {
 	return timeLeft;

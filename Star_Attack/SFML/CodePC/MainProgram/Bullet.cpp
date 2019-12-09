@@ -16,11 +16,6 @@ Bullet::~Bullet()
 {
 }
 
-int Bullet::getId() const
-{
-	return id;
-}
-
 void Bullet::setup(sf::Vector2f dir)
 {
 	this->dir = dir;

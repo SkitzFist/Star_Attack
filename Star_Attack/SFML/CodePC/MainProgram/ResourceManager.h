@@ -4,20 +4,22 @@
 class ResourceManager
 {
 public:
-	static const int WINDOW_WIDTH = 800;
-	static const int WINDOW_HEIGHT = 600;
-public:
 	ResourceManager();
 	~ResourceManager();
+
+	int getWindowWidth() const;
+	int getWindowHeight() const;
 
 	sf::Font* getFont();
 	sf::Texture* getPlayerTexture();
 	sf::Texture* getBossTexture();
+	sf::Texture* getWhiteBallTexture();
 
-	void setup();
+	void setup(int windowWidth, int windowHeight);
 
 private:
-
+	int windowWidth;
+	int windowHeight;
 	//UI
 	sf::Font* font;
 
@@ -27,5 +29,8 @@ private:
 
 	//Boss
 	sf::Texture* BossTexture;
+
+	//Projectiles
+	sf::Texture* whiteBallTexture;
 };
 

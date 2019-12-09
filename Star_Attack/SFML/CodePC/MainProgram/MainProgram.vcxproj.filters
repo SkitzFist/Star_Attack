@@ -46,6 +46,12 @@
     <Filter Include="GameObjects\Bullets">
       <UniqueIdentifier>{28b5c7f4-7b27-444e-8cfe-2f17f34a7cf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Weapons\Boss">
+      <UniqueIdentifier>{b80ca12b-dbf9-4ea6-8d82-12dd982c9394}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Weapons\Boss\Spiral">
+      <UniqueIdentifier>{00161a6d-f8f8-49e6-9e04-52a9cd9c8ee9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -93,6 +99,9 @@
     <ClCompile Include="BulletHandler.cpp">
       <Filter>Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="SpiralWeapon.cpp">
+      <Filter>Weapons\Boss\Spiral</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -136,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="BulletHandler.h">
       <Filter>Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="SpiralWeapon.h">
+      <Filter>Weapons\Boss\Spiral</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

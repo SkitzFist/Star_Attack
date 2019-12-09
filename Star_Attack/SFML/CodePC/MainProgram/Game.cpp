@@ -9,9 +9,14 @@ Game::Game():
 	currentState(nullptr)
 {
 	rm = new ResourceManager();
-	rm->setup();
-
-	window.create(sf::VideoMode(rm->WINDOW_WIDTH, rm->WINDOW_HEIGHT), "Star Attack");
+	
+	auto fullscreenModes = sf::VideoMode::getFullscreenModes();
+	int styles = sf::Style::Fullscreen | sf::Style::Titlebar | sf::Style::Close;
+	
+	rm->setup(fullscreenModes.front().width, fullscreenModes.front().height);
+	
+	window.create(fullscreenModes.front(), "Star Attack", styles);
+	window.setMouseCursorVisible(false);
 
 	currentState = new MenuState(rm);
 }
@@ -51,8 +56,8 @@ void Game::update()
 {
 	elapsedTimeSinceLastUpdate += clock.restart();
 	if (elapsedTimeSinceLastUpdate > timePerFrame) {
-		currentState = currentState->update(timePerFrame); //Todo: Look into delta time
-		elapsedTimeSinceLastUpdate -= timePerFrame;
+		currentState = currentState->update(elapsedTimeSinceLastUpdate); //Todo: Look into delta time
+		elapsedTimeSinceLastUpdate = sf::Time::Zero;
 	}
 }
 

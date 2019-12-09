@@ -6,11 +6,12 @@ public:
 	BulletHandler();
 	~BulletHandler();
 
-	void update(sf::Time delta);
+	void update(sf::Time delta, ResourceManager* rm);
 	void render(sf::RenderWindow &window);
 	bool isColliding(const GameObject &entity);
 	void addBullet(Bullet* bullet);
 private:
+	float offset;
 	int capacity;
 	int nrOf;
 	Bullet** bullets;

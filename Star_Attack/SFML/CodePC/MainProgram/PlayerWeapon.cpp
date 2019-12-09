@@ -13,17 +13,16 @@ PlayerWeapon::~PlayerWeapon()
 {
 }
 
-void PlayerWeapon::update(sf::Time delta)
-{
-	timeLeft -= delta.asSeconds();
-}
-
 void PlayerWeapon::fire(sf::Vector2f startPos, sf::Vector2f dir)
 {
-	Bullet* bullet = new Bullet(rm->getBossTexture());
+	Bullet* bullet = new Bullet(rm->getWhiteBallTexture());
 	bullet->setPosition(startPos.x, startPos.y);
 	bullet->setup(dir);
 	bh->addBullet(bullet);
 
 	timeLeft = getTimeBetweenShots();
+}
+
+void PlayerWeapon::fire()
+{
 }
