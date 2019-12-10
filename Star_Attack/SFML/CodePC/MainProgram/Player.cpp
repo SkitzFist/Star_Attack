@@ -1,7 +1,6 @@
 #include "Player.h"
 
 
-
 Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Enemy* enemy) :
 	Entity(texture),
 	isShooting(false),
@@ -10,11 +9,12 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	//config
 	float startX = 300.f;
 	float startY = 300.f;
-	speed = 10.5f;
+	speed = 6.5f;
 	float timeBetweenShots = 0.3f;
 
 	//Init
 	setPosition(startX, startY);
+	setSpriteScale(0.5f);
 	velX = 0;
 	velY = 0;
 	goalVelX = 0;

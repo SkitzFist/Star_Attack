@@ -6,7 +6,8 @@ PlayState::PlayState(ResourceManager* rm):
 	GameState(rm)
 {
 	bh = new BulletHandler();
-	enemy = new Enemy(GameState::rm->getBossTexture(), static_cast<float>(rm->getWindowWidth()),static_cast<float>(rm->getWindowHeight()));
+	sf::Vector2f screenDimensions = { static_cast<float>(rm->getWindowWidth()) , static_cast<float>(rm->getWindowHeight())};
+	enemy = new Enemy(GameState::rm->getBossTexture(), screenDimensions, rm, bh);
 	player = new Player(GameState::rm->getPlayerTexture(), bh, rm, enemy);
 }
 

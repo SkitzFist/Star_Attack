@@ -7,7 +7,7 @@ class Bullet :
 public:
 	Bullet(sf::Texture* texture);
 	virtual ~Bullet();
-	void setup(sf::Vector2f dir);
+	void setDirection(sf::Vector2f dir);
 	bool isColliding(const GameObject &go);
 	// Inherited via Entity
 	virtual void update(sf::Time delta) override;

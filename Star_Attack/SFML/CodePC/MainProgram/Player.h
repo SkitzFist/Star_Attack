@@ -1,9 +1,7 @@
 #pragma once
 #include "Entity.h"
-#include "ResourceManager.h"
 #include "PlayerWeapon.h"
 #include "Enemy.h"
-#include "Bullet.h"
 #include "BulletHandler.h"
 
 class Player :

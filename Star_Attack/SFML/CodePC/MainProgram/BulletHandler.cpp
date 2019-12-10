@@ -26,7 +26,7 @@ void BulletHandler::update(sf::Time delta, ResourceManager* rm)
 	for (int i = 0; i < nrOf; ++i) {
 		bullets[i]->update(delta);
 
-		if (bullets[i]->getPosition().x < 0 - offset || bullets[i]->getPosition().x > rm->getWindowWidth() + offset || //TODO:: remove hardcoded values
+		if (bullets[i]->getPosition().x < 0 - offset || bullets[i]->getPosition().x > rm->getWindowWidth() + offset ||
 			bullets[i]->getPosition().y < 0 - offset || bullets[i]->getPosition().y > rm->getWindowHeight() + offset) {
 			removeBullet(i);
 		}
@@ -55,7 +55,6 @@ bool BulletHandler::isColliding(const GameObject & go)
 
 void BulletHandler::addBullet(Bullet * bullet)
 {
-	std::cout << "Bullet added" << std::endl;
 	if (nrOf == capacity) {
 		expandArr();
 	}
@@ -64,7 +63,6 @@ void BulletHandler::addBullet(Bullet * bullet)
 
 void BulletHandler::removeBullet(int index)
 {
-	std::cout << "Removed bullet" << std::endl;
 	delete bullets[index];
 	shrinkArrFrom(index);
 	--nrOf;
@@ -79,7 +77,6 @@ void BulletHandler::shrinkArrFrom(int index)
 
 void BulletHandler::expandArr()
 {
-	std::cout << "Expanding Bullet List" << std::endl;
 	capacity += 20;
 	Bullet** tmp = new Bullet*[capacity] {nullptr};
 

@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include "ResourceManager.h"
 #include "BulletHandler.h"
-#include "Weapon.h"
+#include "BossWeapon.h"
 
 class Enemy :
 	public Entity
@@ -16,6 +16,6 @@ public:
 	virtual void moveObject() override;
 
 private:
-	Weapon* currentWeapon;
+	BossWeapon* currentWeapon;
 };
 

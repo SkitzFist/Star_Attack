@@ -16,7 +16,7 @@ Bullet::~Bullet()
 {
 }
 
-void Bullet::setup(sf::Vector2f dir)
+void Bullet::setDirection(sf::Vector2f dir)
 {
 	this->dir = dir;
 }
