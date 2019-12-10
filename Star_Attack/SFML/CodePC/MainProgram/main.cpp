@@ -22,7 +22,6 @@ int main()
 	try
 	{
 		game.run();
-
 	}
 	catch (const std::runtime_error &e)
 	{
@@ -32,6 +31,5 @@ int main()
 		std::cerr << "Unknown Error" << std::endl;
 	}
 	
-
 	return 0;
 }

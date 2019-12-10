@@ -1,8 +1,7 @@
 #pragma once
 #include "Entity.h"
-#include "ResourceManager.h"
+#include "EnemyState.h"
 #include "BulletHandler.h"
-#include "BossWeapon.h"
 
 class Enemy :
 	public Entity
@@ -16,6 +15,6 @@ public:
 	virtual void moveObject() override;
 
 private:
-	BossWeapon* currentWeapon;
+	EnemyState* currentState;
 };
 

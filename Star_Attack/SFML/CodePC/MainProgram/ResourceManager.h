@@ -14,6 +14,7 @@ public:
 	sf::Texture* getPlayerTexture();
 	sf::Texture* getBossTexture();
 	sf::Texture* getWhiteBallTexture();
+	sf::Texture* getRedBallTexture();
 
 	void setup(int windowWidth, int windowHeight);
 
@@ -32,5 +33,6 @@ private:
 
 	//Projectiles
 	sf::Texture* whiteBallTexture;
+	sf::Texture* redBallTexture;
 };
 

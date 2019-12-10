@@ -25,6 +25,7 @@ void CircleWeapon::Setup(sf::Vector2f pos, int nrOfAngles)
 	const float PI = 3.141592f;
 	float angle = PI * 2.f / static_cast<float>(nrOfAngles);
 	float offset = 0.f;
+
 	for (int i = 0; i < nrOfAngles; ++i) {
 		sf::Vector2f tmp= {
 			pos.x + radius * cos(angle + offset),
@@ -43,10 +44,10 @@ void CircleWeapon::Setup(sf::Vector2f pos, int nrOfAngles)
 	}
 }
 
-void CircleWeapon::fireBoss(sf::Vector2f pos)
-{
+void CircleWeapon::fireBoss(sf::Vector2f pos){
+
 	for (int i = 0; i < nrOfAngles; ++i) {
-		Bullet* bullet = new Bullet(rm->getWhiteBallTexture());
+		Bullet* bullet = new Bullet(rm->getRedBallTexture());
 		bullet->setPosition(pos);
 		bullet->setDirection(angles[i]);
 		bh->addBullet(bullet);

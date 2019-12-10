@@ -9,7 +9,7 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	//config
 	float startX = 300.f;
 	float startY = 300.f;
-	speed = 6.5f;
+	speed = 4.5f;
 	float timeBetweenShots = 0.3f;
 
 	//Init

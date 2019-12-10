@@ -1,31 +1,27 @@
 #include "Enemy.h"
-#include "CircleWeapon.h"
+#include "CircleState.h"
 
 
 Enemy::Enemy(sf::Texture* texture, sf::Vector2f pos, ResourceManager* rm, BulletHandler* bh):
 	Entity(texture)
 {
 	//config
-	float timeBetweenShots = 1.f;
-	int nrOfAngles = 16;
+
 	//setup
 	setPosition(pos.x/2, pos.y/2);
-	currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh);
-	currentWeapon->Setup(getPosition(), nrOfAngles);
+	currentState = new CircleState(rm, bh);
+
 }
 
 
 Enemy::~Enemy()
 {
+	delete currentState;
 }
 
 void Enemy::updateObject(sf::Time delta)
 {
-	currentWeapon->update(delta);
-
-	if (currentWeapon->getTimeLeft() <= 0.f) {
-		currentWeapon->fire(getPosition());
-	}
+	currentState = currentState->update(delta);
 }
 
 void Enemy::moveObject()

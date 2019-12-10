@@ -49,8 +49,14 @@
     <Filter Include="Weapons\Boss">
       <UniqueIdentifier>{b80ca12b-dbf9-4ea6-8d82-12dd982c9394}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Weapons\Boss\Spiral">
+    <Filter Include="Weapons\Boss\Circle shot">
       <UniqueIdentifier>{00161a6d-f8f8-49e6-9e04-52a9cd9c8ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Enemy\EnemyState">
+      <UniqueIdentifier>{ebbe9701-6512-47aa-b5bb-6d6550cf5b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities\Enemy\CircleState">
+      <UniqueIdentifier>{6b8fd1b1-3509-40b8-a76e-04ba86890259}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +109,13 @@
       <Filter>Weapons\Boss</Filter>
     </ClCompile>
     <ClCompile Include="CircleWeapon.cpp">
-      <Filter>Weapons\Boss\Spiral</Filter>
+      <Filter>Weapons\Boss\Circle shot</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyState.cpp">
+      <Filter>Entities\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="CircleState.cpp">
+      <Filter>Entities\Enemy\CircleState</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +165,13 @@
       <Filter>Weapons\Boss</Filter>
     </ClInclude>
     <ClInclude Include="CircleWeapon.h">
-      <Filter>Weapons\Boss\Spiral</Filter>
+      <Filter>Weapons\Boss\Circle shot</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState.h">
+      <Filter>Entities\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="CircleState.h">
+      <Filter>Entities\Enemy\CircleState</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

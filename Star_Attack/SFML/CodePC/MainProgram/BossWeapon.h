@@ -9,7 +9,6 @@ public:
 
 	virtual void Setup(sf::Vector2f pos, int nrOfAngles) = 0;
 	virtual void fireBoss(sf::Vector2f pos) = 0;
-
 	int getNrOfAngles() const;
 
 	// Inherited via Weapon

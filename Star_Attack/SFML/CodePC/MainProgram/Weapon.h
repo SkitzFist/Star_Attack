@@ -12,7 +12,7 @@ public:
 	void update(sf::Time delta);
 	virtual void fire(sf::Vector2f pos) = 0;
 	float getTimeLeft() const;
-
+	void setTimeBetweenShots(float value);
 protected:
 	float timeLeft;
 

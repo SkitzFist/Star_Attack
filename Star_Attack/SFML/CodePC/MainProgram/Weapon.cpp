@@ -24,6 +24,11 @@ float Weapon::getTimeLeft() const
 	return timeLeft;
 }
 
+void Weapon::setTimeBetweenShots(float value)
+{
+	timeBetweenShots = value;
+}
+
 float Weapon::getTimeBetweenShots() const
 {
 	return timeBetweenShots;

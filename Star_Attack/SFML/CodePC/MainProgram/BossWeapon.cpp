@@ -11,6 +11,7 @@ BossWeapon::BossWeapon(float timeBetweenShots, ResourceManager* rm, BulletHandle
 
 BossWeapon::~BossWeapon()
 {
+	delete[]angles;
 }
 
 int BossWeapon::getNrOfAngles() const

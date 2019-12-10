@@ -12,6 +12,7 @@ ResourceManager::~ResourceManager()
 	delete playerTexture;
 	delete BossTexture;
 	delete whiteBallTexture;
+	delete redBallTexture;
 }
 int ResourceManager::getWindowWidth() const
 {
@@ -41,6 +42,11 @@ sf::Texture * ResourceManager::getWhiteBallTexture()
 	return whiteBallTexture;
 }
 
+sf::Texture * ResourceManager::getRedBallTexture()
+{
+	return redBallTexture;
+}
+
 void ResourceManager::setup(int windowWidth, int windowHeight)
 {
 	this->windowWidth = windowWidth;
@@ -60,6 +66,10 @@ void ResourceManager::setup(int windowWidth, int windowHeight)
 	}
 	whiteBallTexture = new sf::Texture();
 	if (!whiteBallTexture->loadFromFile("../Sprites/ball16.png")) {
+		throw std::runtime_error("Could not load white ball texture");
+	}
+	redBallTexture = new sf::Texture();
+	if (!redBallTexture->loadFromFile("../Sprites/ball_red16.png")) {
 		throw std::runtime_error("Could not load white ball texture");
 	}
 }
