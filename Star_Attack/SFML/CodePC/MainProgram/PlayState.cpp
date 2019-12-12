@@ -5,17 +5,18 @@
 PlayState::PlayState(ResourceManager* rm):
 	GameState(rm)
 {
-	bh = new BulletHandler();
+	playerBH = new BulletHandler();
+	enemyBh = new BulletHandler();
 	sf::Vector2f screenDimensions = { static_cast<float>(rm->getWindowWidth()) , static_cast<float>(rm->getWindowHeight())};
-	enemy = new Enemy(GameState::rm->getBossTexture(), screenDimensions, rm, bh);
-	player = new Player(GameState::rm->getPlayerTexture(), bh, rm, enemy);
+	enemy = new Enemy(GameState::rm->getBossTexture(), screenDimensions, rm, enemyBh);
+	player = new Player(GameState::rm->getPlayerTexture(), playerBH, rm, enemy);
 }
 
 PlayState::~PlayState()
 {
 	delete player;
 	delete enemy;
-	delete bh;
+	delete playerBH;
 }
 
 GameState* PlayState::handleEvent(const sf::Event & event)
@@ -32,14 +33,17 @@ GameState* PlayState::update(const sf::Time & delta)
 
 	enemy->updateObject(delta);
 
-	bh->update(delta, rm);
+	enemyBh->update(delta, rm);
+	playerBH->update(delta, rm);
+
 
 	return this;
 }
 
 void PlayState::render(sf::RenderWindow & window) const
 {
-	bh->render(window);
+	playerBH->render(window);
+	enemyBh->render(window);
 	window.draw(*player);
 	window.draw(*enemy);
 }

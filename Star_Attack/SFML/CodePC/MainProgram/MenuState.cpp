@@ -5,16 +5,15 @@
 MenuState::MenuState(ResourceManager* rm):
 	GameState(rm)
 {
-	text.setFont(*rm->getFont());
-	text.setPosition(100.f, 300.f);
-	text.setFillColor(sf::Color::White);
-	text.setCharacterSize(52);
-	text.setString("press space to start");
+	playBox = new Box(rm->getFont(), "play", static_cast<float>(rm->getWindowWidth() / 2), static_cast<float>(rm->getWindowHeight() / 2));
+	exitBox = new Box(rm->getFont(), "exit", static_cast<float>(rm->getWindowWidth() / 2), static_cast<float>((rm->getWindowHeight() / 2) + 50.f));
+
 }
 
 
 MenuState::~MenuState()
 {
+	delete playBox;
 }
 
 GameState* MenuState::handleEvent(const sf::Event & event)
@@ -36,5 +35,6 @@ GameState* MenuState::update(const sf::Time & delta)
 
 void MenuState::render(sf::RenderWindow & window) const
 {
-	window.draw(text);
+	playBox->render(window);
+	exitBox->render(window);
 }

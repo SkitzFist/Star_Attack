@@ -17,8 +17,9 @@ public:
 	virtual void render(sf::RenderWindow & window) const override;
 
 private:
-	BulletHandler* bh;
 	Player* player;
+	BulletHandler* playerBH;
 	Enemy* enemy;
+	BulletHandler* enemyBh;
 };
 

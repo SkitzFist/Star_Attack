@@ -1,5 +1,6 @@
 #pragma once
 #include "GameState.h"
+#include "Box.h"
 
 class MenuState : public GameState
 {
@@ -14,5 +15,7 @@ public:
 
 private:
 	sf::Text text;
+	Box* playBox;
+	Box* exitBox;
 };
 

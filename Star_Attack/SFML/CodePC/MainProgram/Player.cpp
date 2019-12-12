@@ -22,7 +22,6 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	weapon = new PlayerWeapon(timeBetweenShots, rm, bh);
 }
 
-
 Player::~Player()
 {
 	delete weapon;
@@ -76,7 +75,6 @@ void Player::updateObject(sf::Time delta)
 	engageMove(delta);
 	weapon->update(delta);
 	if (weapon->getTimeLeft() <= 0 && isShooting) {
-		
 		shoot();
 	}
 }
@@ -113,11 +111,8 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 	}
 
 	if (key == sf::Keyboard::Space) {
-
 		isShooting = true;
-
 	}
-
 }
 
 void Player::onKeyUp(sf::Keyboard::Key key)

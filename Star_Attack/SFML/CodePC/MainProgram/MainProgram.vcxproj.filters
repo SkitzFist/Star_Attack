@@ -78,9 +78,6 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
-    <ClCompile Include="UiElement.cpp">
-      <Filter>UI Element</Filter>
-    </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -117,6 +114,9 @@
     <ClCompile Include="CircleState.cpp">
       <Filter>Entities\Enemy\CircleState</Filter>
     </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>UI Element</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -133,9 +133,6 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="UiElement.h">
-      <Filter>UI Element</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files</Filter>
@@ -172,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="CircleState.h">
       <Filter>Entities\Enemy\CircleState</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>UI Element</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
