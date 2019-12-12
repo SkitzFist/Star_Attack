@@ -28,7 +28,7 @@ void BulletHandler::update(sf::Time delta, ResourceManager* rm)
 
 		if (bullets[i]->getPosition().x < 0 - offset || bullets[i]->getPosition().x > rm->getWindowWidth() + offset ||
 			bullets[i]->getPosition().y < 0 - offset || bullets[i]->getPosition().y > rm->getWindowHeight() + offset) {
-			removeBullet(i);
+			removeBulletAt(i);
 		}
 	}
 }
@@ -46,7 +46,7 @@ bool BulletHandler::isColliding(const GameObject & go)
 
 	for (int i = 0; i < nrOf; ++i) {
 		if (bullets[i]->isColliding(go)) {
-			removeBullet(i);
+			removeBulletAt(i);
 			isColliding = true;
 		}
 	}
@@ -61,7 +61,17 @@ void BulletHandler::addBullet(Bullet * bullet)
 	bullets[nrOf++] = bullet;
 }
 
-void BulletHandler::removeBullet(int index)
+int BulletHandler::getNrOf() const
+{
+	return nrOf;
+}
+
+Bullet ** BulletHandler::getBullets()
+{
+	return bullets;
+}
+
+void BulletHandler::removeBulletAt(int index)
 {
 	delete bullets[index];
 	shrinkArrFrom(index);

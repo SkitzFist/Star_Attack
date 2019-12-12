@@ -10,6 +10,10 @@ public:
 	void render(sf::RenderWindow &window);
 	bool isColliding(const GameObject &entity);
 	void addBullet(Bullet* bullet);
+	int getNrOf() const;
+	void removeBulletAt(int index);
+	Bullet** getBullets();
+
 private:
 	float offset;
 	int capacity;
@@ -17,7 +21,6 @@ private:
 	Bullet** bullets;
 
 private:
-	void removeBullet(int index);
 	void shrinkArrFrom(int index);
 	void expandArr();
 };

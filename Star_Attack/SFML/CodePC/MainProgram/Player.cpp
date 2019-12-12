@@ -84,6 +84,10 @@ void Player::moveObject()
 	moveSprite(velX, velY);
 }
 
+void Player::takeDamage()
+{
+}
+
 void Player::onKeyDown(sf::Keyboard::Key key)
 {
 	switch (key)

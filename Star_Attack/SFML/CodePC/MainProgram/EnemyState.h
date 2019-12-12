@@ -11,13 +11,14 @@ public:
 	
 	virtual EnemyState* update(sf::Time delta) = 0;
 	virtual void fire() = 0;
-
+	virtual void takeDamage() = 0;
 	//Enemy* getEnemy() const;
 
 protected:
 	BossWeapon* currentWeapon;
 	ResourceManager* rm;
 	BulletHandler* bh;
+	int health;
 private:
 
 	//Enemy* enemy;

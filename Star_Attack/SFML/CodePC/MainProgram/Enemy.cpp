@@ -27,3 +27,8 @@ void Enemy::updateObject(sf::Time delta)
 void Enemy::moveObject()
 {
 }
+
+void Enemy::takeDamage()
+{
+	currentState->takeDamage();
+}

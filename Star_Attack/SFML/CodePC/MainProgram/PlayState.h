@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "BulletHandler.h"
+#include "Collision.h"
 
 class PlayState :
 	public GameState
@@ -21,5 +22,6 @@ private:
 	BulletHandler* playerBH;
 	Enemy* enemy;
 	BulletHandler* enemyBh;
+	Collision collision;
 };
 

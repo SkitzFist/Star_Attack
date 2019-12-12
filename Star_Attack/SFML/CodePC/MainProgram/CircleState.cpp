@@ -10,11 +10,12 @@ CircleState::CircleState(ResourceManager* rm, BulletHandler* bh) :
 		static_cast<float>(rm->getWindowWidth() / 2.f),
 		static_cast<float>(rm->getWindowHeight() / 2.f)
 	};
-	float timeBetweenShots = 0.3f;
-	int nrOfAngles = 15;
+	timeBetweenShots = 0.8f;
+	nrOfAngles = 5;
+	health = 5;
 
 	//Setup
-	currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh, true);
+	currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh);
 
 	currentWeapon->Setup(pos, nrOfAngles); 
 }
@@ -62,4 +63,23 @@ void CircleState::fire()
 	//};
 	//currentWeapon->fire(p4);
 	
+}
+
+void CircleState::takeDamage()
+{
+	--health;
+
+	if (health <= 0) {
+		static int inc = 0;
+		++inc;
+		if (inc == 3 && nrOfAngles < 20 ) {
+			++nrOfAngles;
+			inc = 0;
+		}
+		delete currentWeapon;
+		timeBetweenShots -= 0.025f;
+		currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh, true);
+		currentWeapon->Setup(pos, nrOfAngles);
+		health = 5;
+	}
 }

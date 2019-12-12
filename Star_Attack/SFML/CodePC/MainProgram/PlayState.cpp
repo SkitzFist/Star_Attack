@@ -17,6 +17,7 @@ PlayState::~PlayState()
 	delete player;
 	delete enemy;
 	delete playerBH;
+	delete enemyBh;
 }
 
 GameState* PlayState::handleEvent(const sf::Event & event)
@@ -35,7 +36,9 @@ GameState* PlayState::update(const sf::Time & delta)
 
 	enemyBh->update(delta, rm);
 	playerBH->update(delta, rm);
-
+	
+	collision.checkBetween(playerBH, enemy);
+	collision.radiusCheckBetween(enemyBh, player);
 
 	return this;
 }

@@ -37,6 +37,7 @@ void GameObject::rotateSprite(float angle)
 void GameObject::setSpriteScale(float scale)
 {
 	sprite.setScale(scale, scale);
+	//sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
 }
 
 void GameObject::setPosition(float x, float y)

@@ -18,7 +18,7 @@ public:
 	// Inherited via Entity
 	virtual void updateObject(sf::Time delta) override;
 	virtual void moveObject() override;
-
+	virtual void takeDamage();
 private:
 	float speed;
 

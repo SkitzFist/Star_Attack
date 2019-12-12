@@ -14,6 +14,7 @@ MenuState::MenuState(ResourceManager* rm):
 MenuState::~MenuState()
 {
 	delete playBox;
+	delete exitBox;
 }
 
 GameState* MenuState::handleEvent(const sf::Event & event)

@@ -23,6 +23,9 @@ CircleWeapon::~CircleWeapon()
 
 void CircleWeapon::updateRotation(sf::Vector2f pos)
 {
+	delete[] angles;
+	angles = new sf::Vector2f[nrOfAngles];
+
 	const float PI = 3.141592f;
 	float angle = PI * 2.f / static_cast<float>(nrOfAngles);
 	offset += rotationSpeed;
