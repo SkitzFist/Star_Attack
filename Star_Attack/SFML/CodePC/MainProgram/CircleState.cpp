@@ -70,14 +70,24 @@ void CircleState::takeDamage()
 	--health;
 
 	if (health <= 0) {
+		delete currentWeapon;
+
 		static int inc = 0;
 		++inc;
-		if (inc == 3 && nrOfAngles < 20 ) {
+		if (inc == 4 && nrOfAngles < 50 ) {
 			++nrOfAngles;
 			inc = 0;
+			std::cout << "Angles: " << nrOfAngles << std::endl;;
 		}
-		delete currentWeapon;
-		timeBetweenShots -= 0.025f;
+		
+		timeBetweenShots -= 0.015f;
+		if (timeBetweenShots <= 0.05) {
+			timeBetweenShots = 1.2f;
+			static int count = 0;
+			std::cout << ++count << std::endl;
+		}
+
+
 		currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh, true);
 		currentWeapon->Setup(pos, nrOfAngles);
 		health = 5;

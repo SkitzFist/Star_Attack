@@ -29,7 +29,7 @@ void Collision::checkBetween(BulletHandler *bh, Entity * entity)
 void Collision::radiusCheckBetween(BulletHandler *bh, Entity * entity)
 {
 	short index = 0;
-	float radius = 15.f;
+	float radius = 10.f;
 
 	while (index < bh->getNrOf() && entity->getIsAlive()) {
 		Bullet* bullet = bh->getBullets()[index];

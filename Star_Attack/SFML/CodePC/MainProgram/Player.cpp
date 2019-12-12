@@ -11,6 +11,7 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	float startY = 300.f;
 	speed = 4.5f;
 	float timeBetweenShots = 0.3f;
+	addToHealth(5);
 
 	//Init
 	setPosition(startX, startY);
@@ -86,6 +87,10 @@ void Player::moveObject()
 
 void Player::takeDamage()
 {
+	addToHealth(-1);
+	if (getHealth() <= 0) {
+		delete this;
+	}
 }
 
 void Player::onKeyDown(sf::Keyboard::Key key)
