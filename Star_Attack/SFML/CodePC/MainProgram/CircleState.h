@@ -15,5 +15,6 @@ private:
 	sf::Vector2f pos;
 	float timeBetweenShots;
 	int nrOfAngles;
+	int inc;
 };
 

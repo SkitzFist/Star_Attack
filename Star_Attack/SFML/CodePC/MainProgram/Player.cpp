@@ -13,6 +13,11 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	float timeBetweenShots = 0.3f;
 	addToHealth(5);
 
+	up = sf::Keyboard::W;
+	down = sf::Keyboard::S;
+	left = sf::Keyboard::A;
+	right = sf::Keyboard::D;
+
 	//Init
 	setPosition(startX, startY);
 	setSpriteScale(0.5f);
@@ -89,35 +94,49 @@ void Player::takeDamage()
 {
 	addToHealth(-1);
 	if (getHealth() <= 0) {
-		delete this;
+		setIsAlive(false);
 	}
 }
 
 void Player::onKeyDown(sf::Keyboard::Key key)
 {
-	switch (key)
-	{
-	case sf::Keyboard::Up:
+
+	if (key == up) {
 		goalVelY = -speed;
-		break;
-	case sf::Keyboard::Down:
+	}
+	else if (key == down) {
 		goalVelY = speed;
-		break;
-	default:
-		break;
 	}
 
-	switch (key)
-	{
-	case sf::Keyboard::Right:
+	if (key == right) {
 		goalVelX = speed;
-		break;
-	case sf::Keyboard::Left:
-		goalVelX = -speed;
-		break;
-	default:
-		break;
 	}
+	else if (key == left) {
+		goalVelX = -speed;
+	}
+	//switch (key)
+	//{
+	//case sf::Keyboard::W:
+	//	goalVelY = -speed;
+	//	break;
+	//case sf::Keyboard::S:
+	//	goalVelY = speed;
+	//	break;
+	//default:
+	//	break;
+	//}
+
+	//switch (key)
+	//{
+	//case sf::Keyboard::D:
+	//	goalVelX = speed;
+	//	break;
+	//case sf::Keyboard::A:
+	//	goalVelX = -speed;
+	//	break;
+	//default:
+	//	break;
+	//}
 
 	if (key == sf::Keyboard::Space) {
 		isShooting = true;
@@ -126,25 +145,25 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 
 void Player::onKeyUp(sf::Keyboard::Key key)
 {
-	if (key == sf::Keyboard::Up && !sf::Keyboard::isKeyPressed(sf::Keyboard::Down) ||
-		key == sf::Keyboard::Down && !sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+	if (key == up && !sf::Keyboard::isKeyPressed(down) ||
+		key == down && !sf::Keyboard::isKeyPressed(up)) {
 		goalVelY = 0;
 	}
-	else if (key == sf::Keyboard::Up && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+	else if (key == up && sf::Keyboard::isKeyPressed(down)) {
 		goalVelY = speed;
 	}
-	else if (key == sf::Keyboard::Down && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+	else if (key == down && sf::Keyboard::isKeyPressed(up)) {
 		goalVelY = -speed;
 	}
 
-	if (key == sf::Keyboard::Right && !sf::Keyboard::isKeyPressed(sf::Keyboard::Left) ||
-		key == sf::Keyboard::Left && !sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+	if (key == right && !sf::Keyboard::isKeyPressed(left) ||
+		key == left && !sf::Keyboard::isKeyPressed(right)) {
 		goalVelX = 0;
 	}
-	else if (key == sf::Keyboard::Left && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+	else if (key == left && sf::Keyboard::isKeyPressed(right)) {
 		goalVelX = speed;
 	}
-	else if (key == sf::Keyboard::Right && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+	else if (key == right && sf::Keyboard::isKeyPressed(left)) {
 		goalVelX = -speed;
 	}
 

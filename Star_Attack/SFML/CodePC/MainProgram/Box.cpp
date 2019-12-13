@@ -20,6 +20,7 @@ Box::Box( sf::Font* font, std::string string, float x, float y)
 	float height = text.getGlobalBounds().height;
 	box.setSize(sf::Vector2f(width + boxOffset, height + (boxOffset)));
 	box.setOrigin(box.getSize().x / 2, box.getSize().y / 2);
+
 	movePosition(x, y);
 }
 

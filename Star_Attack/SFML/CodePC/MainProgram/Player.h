@@ -38,4 +38,9 @@ private:
 	void engageMove(sf::Time delta);
 	float lerpMove(float goal, float current, float delta);
 	void shoot();
+
+	sf::Keyboard::Key up;
+	sf::Keyboard::Key down;
+	sf::Keyboard::Key right;
+	sf::Keyboard::Key left;
 };

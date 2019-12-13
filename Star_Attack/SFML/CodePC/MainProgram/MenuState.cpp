@@ -1,7 +1,6 @@
 #include "MenuState.h"
 #include "PlayState.h"
 
-
 MenuState::MenuState(ResourceManager* rm):
 	GameState(rm)
 {
@@ -21,7 +20,7 @@ GameState* MenuState::handleEvent(const sf::Event & event)
 {
 	GameState* state = this;
 
-	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Space) {
+	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Return) {
 		state = new PlayState(rm);
 		delete this;
 	}

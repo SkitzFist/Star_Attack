@@ -175,6 +175,7 @@
     <ClCompile Include="BulletHandler.cpp" />
     <ClCompile Include="CircleState.cpp" />
     <ClCompile Include="Collision.cpp" />
+    <ClCompile Include="DeathState.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyState.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -197,6 +198,7 @@
     <ClInclude Include="BulletHandler.h" />
     <ClInclude Include="CircleState.h" />
     <ClInclude Include="Collision.h" />
+    <ClInclude Include="DeathState.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyState.h" />
     <ClInclude Include="Entity.h" />

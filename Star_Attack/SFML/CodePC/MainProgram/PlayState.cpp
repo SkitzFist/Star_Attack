@@ -1,5 +1,5 @@
 #include "PlayState.h"
-
+#include "DeathState.h"
 
 
 PlayState::PlayState(ResourceManager* rm):
@@ -28,6 +28,7 @@ GameState* PlayState::handleEvent(const sf::Event & event)
 
 GameState* PlayState::update(const sf::Time & delta)
 {
+	GameState* state = this;
 	player->rotateTowards(*enemy);
 	player->updateObject(delta);
 	player->boundToWindow(rm);
@@ -40,7 +41,11 @@ GameState* PlayState::update(const sf::Time & delta)
 	collision.checkBetween(playerBH, enemy);
 	collision.radiusCheckBetween(enemyBh, player);
 
-	return this;
+	if (!player->getIsAlive()) {
+		state = new DeathState(rm, this);
+	}
+
+	return state;
 }
 
 void PlayState::render(sf::RenderWindow & window) const

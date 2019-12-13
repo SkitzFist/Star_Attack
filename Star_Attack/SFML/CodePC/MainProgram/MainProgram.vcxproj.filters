@@ -58,6 +58,9 @@
     <Filter Include="Entities\Enemy\CircleState">
       <UniqueIdentifier>{6b8fd1b1-3509-40b8-a76e-04ba86890259}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game States\Death State">
+      <UniqueIdentifier>{4b60f6ec-ca86-486a-966a-d4129d81b72b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -120,6 +123,9 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DeathState.cpp">
+      <Filter>Game States\Death State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -178,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathState.h">
+      <Filter>Game States\Death State</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

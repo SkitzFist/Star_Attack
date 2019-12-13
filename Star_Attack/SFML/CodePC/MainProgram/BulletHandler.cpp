@@ -74,8 +74,8 @@ Bullet ** BulletHandler::getBullets()
 void BulletHandler::removeBulletAt(int index)
 {
 	delete bullets[index];
-	shrinkArrFrom(index);
-	--nrOf;
+	bullets[index] = bullets[--nrOf];
+	bullets[nrOf] = nullptr;
 }
 
 void BulletHandler::shrinkArrFrom(int index)

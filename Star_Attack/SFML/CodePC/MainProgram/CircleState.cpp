@@ -15,6 +15,7 @@ CircleState::CircleState(ResourceManager* rm, BulletHandler* bh) :
 	health = 5;
 
 	//Setup
+	inc = 0;
 	currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh);
 
 	currentWeapon->Setup(pos, nrOfAngles); 
@@ -71,8 +72,6 @@ void CircleState::takeDamage()
 
 	if (health <= 0) {
 		delete currentWeapon;
-
-		static int inc = 0;
 		++inc;
 		if (inc == 4 && nrOfAngles < 50 ) {
 			++nrOfAngles;
