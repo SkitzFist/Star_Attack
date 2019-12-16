@@ -2,7 +2,7 @@
 
 
 Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Enemy* enemy) :
-	Entity(texture),
+	Entity(texture, 5, 2),
 	isShooting(false),
 	enemy(enemy)
 {
@@ -13,19 +13,26 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	float timeBetweenShots = 0.3f;
 	addToHealth(5);
 
-	up = sf::Keyboard::W;
-	down = sf::Keyboard::S;
-	left = sf::Keyboard::A;
-	right = sf::Keyboard::D;
+	//controls
+	//up = sf::Keyboard::W;
+	//down = sf::Keyboard::S;
+	//left = sf::Keyboard::A;
+	//right = sf::Keyboard::D;
 
-	//Init
+	up = sf::Keyboard::Up;
+	down = sf::Keyboard::Down;
+	left = sf::Keyboard::Left;
+	right = sf::Keyboard::Right;
+
+	//setup
 	setPosition(startX, startY);
-	setSpriteScale(0.5f);
+	setSpriteScale(2.f);
 	velX = 0;
 	velY = 0;
 	goalVelX = 0;
 	goalVelY = 0;
 	weapon = new PlayerWeapon(timeBetweenShots, rm, bh);
+	animator = new  Animator(getSprite(), texture, 5, 2);
 }
 
 Player::~Player()
@@ -83,6 +90,7 @@ void Player::updateObject(sf::Time delta)
 	if (weapon->getTimeLeft() <= 0 && isShooting) {
 		shoot();
 	}
+	animator->update(delta);
 }
 
 void Player::moveObject()
@@ -204,5 +212,6 @@ void Player::shoot()
 		delta.x / magnitude,
 		delta.y / magnitude
 	};
+
 	weapon->fire(getPosition(), dir);
 }

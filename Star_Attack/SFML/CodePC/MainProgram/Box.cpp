@@ -21,7 +21,7 @@ Box::Box( sf::Font* font, std::string string, float x, float y)
 	box.setSize(sf::Vector2f(width + boxOffset, height + (boxOffset)));
 	box.setOrigin(box.getSize().x / 2, box.getSize().y / 2);
 
-	movePosition(x, y);
+	setPosition(x, y);
 }
 
 
@@ -29,7 +29,7 @@ Box::~Box()
 {
 }
 
-void Box::movePosition(float x, float y)
+void Box::setPosition(float x, float y)
 {
 	box.setPosition(x, y);
 	text.setPosition( 

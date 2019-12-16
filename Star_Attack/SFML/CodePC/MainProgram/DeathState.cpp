@@ -13,7 +13,7 @@ DeathState::DeathState(ResourceManager* rm, GameState* playState):
 	box = new Box(rm->getFont(), "game over", windowWidth/2, windowHeight/2);
 
 	greyBox.setSize(sf::Vector2f(windowWidth, windowHeight));
-	sf::Color color = { 10,10,10, 200 };
+	sf::Color color = { 5,5,5, 200 };
 	greyBox.setFillColor(color);
 }
 

@@ -17,5 +17,14 @@ private:
 	sf::Text text;
 	Box* playBox;
 	Box* exitBox;
+
+	//testing
+	sf::Image image;
+	sf::Texture texture;
+	sf::Sprite sprite;
+	float radius;
+	float angle;
+	int points;
+	int count;
 };
 
