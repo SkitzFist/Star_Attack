@@ -47,6 +47,11 @@ sf::Texture * ResourceManager::getRedBallTexture()
 	return redBallTexture;
 }
 
+sf::Texture * ResourceManager::getBgrTexture()
+{
+	return bgr;
+}
+
 void ResourceManager::setup(int windowWidth, int windowHeight)
 {
 	this->windowWidth = windowWidth;
@@ -57,7 +62,7 @@ void ResourceManager::setup(int windowWidth, int windowHeight)
 		throw std::runtime_error("Could not load font");
 	}
 	playerTexture = new sf::Texture();
-	if (!playerTexture->loadFromFile("../Sprites/player.png")) {
+	if (!playerTexture->loadFromFile("../Sprites/ship.png")) {
 		throw std::runtime_error("Could not load player texture");
 	}
 	BossTexture = new sf::Texture();
@@ -69,7 +74,11 @@ void ResourceManager::setup(int windowWidth, int windowHeight)
 		throw std::runtime_error("Could not load white ball texture");
 	}
 	redBallTexture = new sf::Texture();
-	if (!redBallTexture->loadFromFile("../Sprites/ball_red16.png")) {
+	if (!redBallTexture->loadFromFile("../Sprites/Curseless.png")) {
+		throw std::runtime_error("Could not load white ball texture");
+	}
+	bgr = new sf::Texture();
+	if (!bgr->loadFromFile("../Sprites/bgr_pixel.png")) {
 		throw std::runtime_error("Could not load white ball texture");
 	}
 }

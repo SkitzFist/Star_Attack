@@ -1,10 +1,11 @@
 #pragma once
 #include "GameObject.h"
+#include "Animator.h"
 
 class Entity : public GameObject
 {
 public:
-	Entity(sf::Texture* texture);
+	Entity(sf::Texture* texture, int spriteRows, int SpriteHeight);
 	virtual ~Entity();
 	virtual void takeDamage() = 0;
 	bool getIsAlive() const;
@@ -19,8 +20,10 @@ protected:
 	void setIsAlive(bool isAlive);
 	int getHealth() const;
 	void addToHealth(int value);
+	Animator* animator;
 private:
 	bool isAlive;
 	int health;
+	
 };
 

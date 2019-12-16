@@ -15,6 +15,7 @@ public:
 	sf::Texture* getBossTexture();
 	sf::Texture* getWhiteBallTexture();
 	sf::Texture* getRedBallTexture();
+	sf::Texture* getBgrTexture();
 
 	void setup(int windowWidth, int windowHeight);
 
@@ -23,10 +24,10 @@ private:
 	int windowHeight;
 	//UI
 	sf::Font* font;
+	sf::Texture* bgr;
 
 	//Player
 	sf::Texture* playerTexture;
-
 
 	//Boss
 	sf::Texture* BossTexture;

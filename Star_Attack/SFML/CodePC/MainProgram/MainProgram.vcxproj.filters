@@ -126,6 +126,9 @@
     <ClCompile Include="DeathState.cpp">
       <Filter>Game States\Death State</Filter>
     </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="DeathState.h">
       <Filter>Game States\Death State</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

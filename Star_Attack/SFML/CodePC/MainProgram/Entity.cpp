@@ -2,8 +2,8 @@
 
 
 
-Entity::Entity(sf::Texture* texture):
-	GameObject(texture)
+Entity::Entity(sf::Texture* texture, int spriteRows, int spriteColumns):
+	GameObject(texture, spriteRows, spriteColumns)
 {
 	isAlive = true;
 }
@@ -11,6 +11,7 @@ Entity::Entity(sf::Texture* texture):
 
 Entity::~Entity()
 {
+	delete animator;
 }
 
 bool Entity::getIsAlive() const

@@ -10,6 +10,10 @@ PlayState::PlayState(ResourceManager* rm):
 	sf::Vector2f screenDimensions = { static_cast<float>(rm->getWindowWidth()) , static_cast<float>(rm->getWindowHeight())};
 	enemy = new Enemy(GameState::rm->getBossTexture(), screenDimensions, rm, enemyBh);
 	player = new Player(GameState::rm->getPlayerTexture(), playerBH, rm, enemy);
+
+	bgr = new sf::Sprite();
+	bgr->setTexture(*rm->getBgrTexture());
+	bgr->setScale(sf::Vector2f(4.f, 4.f));
 }
 
 PlayState::~PlayState()
@@ -33,13 +37,14 @@ GameState* PlayState::update(const sf::Time & delta)
 	player->updateObject(delta);
 	player->boundToWindow(rm);
 
-	enemy->updateObject(delta);
+	if (enemy->getIsAlive()) {
+		enemy->updateObject(delta);
+		enemyBh->update(delta, rm);
+		collision.radiusCheckBetween(enemyBh, player);
+	}
 
-	enemyBh->update(delta, rm);
 	playerBH->update(delta, rm);
-	
 	collision.checkBetween(playerBH, enemy);
-	collision.radiusCheckBetween(enemyBh, player);
 
 	if (!player->getIsAlive()) {
 		state = new DeathState(rm, this);
@@ -50,8 +55,12 @@ GameState* PlayState::update(const sf::Time & delta)
 
 void PlayState::render(sf::RenderWindow & window) const
 {
+	window.draw(*bgr);
 	playerBH->render(window);
-	enemyBh->render(window);
+	if (enemy->getIsAlive()) {
+		enemyBh->render(window);
+		window.draw(*enemy);
+	}
 	window.draw(*player);
-	window.draw(*enemy);
+	
 }

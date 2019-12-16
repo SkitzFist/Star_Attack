@@ -3,7 +3,7 @@
 
 
 Bullet::Bullet(sf::Texture* texture):
-	GameObject(texture)
+	GameObject(texture, 1, 1)
 {
 	//config
 	dir = { 0.f,0.f };

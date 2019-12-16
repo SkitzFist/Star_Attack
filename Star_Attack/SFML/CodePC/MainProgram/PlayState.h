@@ -23,5 +23,7 @@ private:
 	Enemy* enemy;
 	BulletHandler* enemyBh;
 	Collision collision;
+
+	sf::Sprite* bgr;
 };
 

@@ -3,7 +3,7 @@
 
 
 Enemy::Enemy(sf::Texture* texture, sf::Vector2f pos, ResourceManager* rm, BulletHandler* bh):
-	Entity(texture)
+	Entity(texture, 1,1)
 {
 	//config
 

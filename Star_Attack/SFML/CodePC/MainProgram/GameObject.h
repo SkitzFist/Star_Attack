@@ -5,7 +5,7 @@
 class GameObject : public sf::Drawable
 {
 public:
-	GameObject(sf::Texture* texture);
+	GameObject(sf::Texture* texture, int spriteColumns, int spriteRows);
 	~GameObject();
 
 	virtual void update(sf::Time delta) = 0;
@@ -18,11 +18,12 @@ public:
 	void moveSprite(float velX, float velY);
 	void rotateSprite(float angle);
 	void setSpriteScale(float scale);
+	sf::Sprite* getSprite() const;
 	// Inherited via Drawable
 	virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
 
 
 private:
-	sf::Sprite sprite;
+	sf::Sprite* sprite;
 };
 
