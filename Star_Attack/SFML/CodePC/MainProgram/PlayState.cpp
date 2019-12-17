@@ -22,6 +22,9 @@ PlayState::~PlayState()
 	delete enemy;
 	delete playerBH;
 	delete enemyBh;
+	delete bgr;
+
+
 }
 
 GameState* PlayState::handleEvent(const sf::Event & event)

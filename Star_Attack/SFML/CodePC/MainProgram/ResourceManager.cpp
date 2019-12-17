@@ -13,6 +13,8 @@ ResourceManager::~ResourceManager()
 	delete BossTexture;
 	delete whiteBallTexture;
 	delete redBallTexture;
+	delete bgr;
+
 }
 int ResourceManager::getWindowWidth() const
 {

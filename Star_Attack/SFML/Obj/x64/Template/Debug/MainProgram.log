@@ -1,4 +1,22 @@
-﻿  GameObject.cpp
+﻿  BossWeapon.cpp
+  Bullet.cpp
+  BulletHandler.cpp
+  CircleState.cpp
+  CircleWeapon.cpp
+  Collision.cpp
+  DeathState.cpp
+  Enemy.cpp
+  EnemyState.cpp
+  Entity.cpp
+  Game.cpp
+  GameObject.cpp
+  GameState.cpp
+  MenuState.cpp
   PlayState.cpp
+  Player.cpp
+  PlayerWeapon.cpp
+  ResourceManager.cpp
+  Weapon.cpp
+  main.cpp
   Generating Code...
   MainProgram.vcxproj -> C:\Users\JoPer\Documents\Star_Attack\Star_Attack\SFML\CodePC\../Bin/x64/TemplateD.exe
