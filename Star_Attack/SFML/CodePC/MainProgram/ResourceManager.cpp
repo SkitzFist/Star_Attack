@@ -64,7 +64,7 @@ void ResourceManager::setup(int windowWidth, int windowHeight)
 		throw std::runtime_error("Could not load font");
 	}
 	playerTexture = new sf::Texture();
-	if (!playerTexture->loadFromFile("../Sprites/ship.png")) {
+	if (!playerTexture->loadFromFile("../Sprites/ship_piskel.png")) {
 		throw std::runtime_error("Could not load player texture");
 	}
 	BossTexture = new sf::Texture();

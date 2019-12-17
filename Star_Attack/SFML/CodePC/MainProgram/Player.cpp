@@ -32,7 +32,7 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	goalVelX = 0;
 	goalVelY = 0;
 	weapon = new PlayerWeapon(timeBetweenShots, rm, bh);
-	animator = new  Animator(getSprite(), texture, 5, 2);
+	animator = new  Animator(getSprite(), texture, 2, 3);
 }
 
 Player::~Player()
