@@ -12,7 +12,7 @@ public:
 
 private:
 	sf::Clock clock;
-	sf::Time elapsedTimeSinceLastUpdate;
+	sf::Time elapsedTime;
 	sf::Time timePerFrame;
 	sf::RenderWindow window;
 
@@ -22,6 +22,8 @@ private:
 	void handleEvent();
 	void update();
 	void render();
+
+	sf::Image* createBgrImage() const;
 
 };
 

@@ -12,9 +12,22 @@ public:
 	virtual void fire() override;
 	virtual void takeDamage() override;
 private:
+
 	sf::Vector2f pos;
 	float timeBetweenShots;
 	int nrOfAngles;
 	int inc;
+
+	//HealthBar
+	int healthRadius;
+	int currentHealthRadius;
+	int healthInc;
+	const int POINTS = 1200;
+	float angle;
+	float offset;
+
+private:
+	void updateHealthBar();
+	bool isInsideBounds(int x, int y);
 };
 

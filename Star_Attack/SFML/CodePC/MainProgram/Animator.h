@@ -7,7 +7,7 @@ public:
 	~Animator();
 
 	void update(sf::Time delta);
-
+	void setAnimation(int value, bool isLooping);
 
 private:
 	Animator() = delete;
@@ -15,5 +15,9 @@ private:
 	sf::Sprite* sprite;
 	sf::Texture* texture;
 	float frameTime;
+	bool isLooping;
+
+	int maxWidth;
+	int maxHeight;
 };
 

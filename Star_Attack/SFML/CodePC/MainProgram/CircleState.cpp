@@ -17,8 +17,15 @@ CircleState::CircleState(ResourceManager* rm, BulletHandler* bh) :
 	//Setup
 	inc = 0;
 	currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh);
-
 	currentWeapon->Setup(pos, nrOfAngles); 
+
+	healthRadius = 0;
+	currentHealthRadius = 0;
+	healthInc = 0;
+	const float PI = 3.141592653f;
+	angle = (PI * 2) / POINTS;
+	offset = 0;
+
 }
 
 
@@ -36,6 +43,12 @@ EnemyState * CircleState::update(sf::Time delta)
 	if (currentWeapon->getTimeLeft() <= 0.f) {
 		fire();
 	}
+
+	if (currentHealthRadius != healthRadius) {
+		updateHealthBar();
+		currentHealthRadius = healthRadius;
+	}
+
 	return state;
 }
 
@@ -68,15 +81,21 @@ void CircleState::fire()
 
 void CircleState::takeDamage()
 {
-	--health;
 
+	if (healthInc % 2 == 0) {
+		++healthRadius;
+		healthInc = 0;
+	}
+	
+	--health;
 	if (health <= 0) {
+		
 		delete currentWeapon;
 		++inc;
 		if (inc == 4 && nrOfAngles < 50 ) {
 			++nrOfAngles;
 			inc = 0;
-			std::cout << "Angles: " << nrOfAngles << std::endl;;
+			std::cout << "Angles: " << nrOfAngles << std::endl;
 		}
 		
 		timeBetweenShots -= 0.015f;
@@ -91,4 +110,42 @@ void CircleState::takeDamage()
 		currentWeapon->Setup(pos, nrOfAngles);
 		health = 5;
 	}
+
+	++healthInc;
+}
+
+void CircleState::updateHealthBar()
+{
+	sf::Image* image = rm->getBgrImage();
+	for (int i = 0; i < POINTS; ++i) {
+		float xPos = (rm->getWindowWidth() / 2) + healthRadius * cos(offset);
+		float yPos = (rm->getWindowHeight() / 2) - healthRadius * sin(offset);
+
+		int x = static_cast<int>(round(xPos));
+		int y = static_cast<int>(round(yPos));
+		if (isInsideBounds(x, y)) {
+			if (image->getPixel(x, y).r < 40 &&
+				image->getPixel(x, y).g > 0 &&
+				image->getPixel(x, y).b > 0) {
+
+				image->setPixel(x, y, sf::Color::Red);
+			}
+		}
+		offset += angle;
+	}
+
+	if (healthRadius < (rm->getWindowWidth() / 2)) {
+		++healthRadius;
+	}
+	rm->getBgrTexture()->loadFromImage(*image);
+}
+
+bool CircleState::isInsideBounds(int x, int y)
+{
+	bool isInside = false;
+	if (x > 0 && x < rm->getWindowWidth() &&
+		y > 0 && y < rm->getWindowHeight()) {
+		isInside = true;
+	}
+	return isInside;
 }

@@ -32,6 +32,11 @@ private:
 
 	PlayerWeapon* weapon;
 	bool isShooting;
+
+	const int IDLE = 0;
+	const int TURN_LEFT = 1;
+	const int TURN_RIGHT = 2;
+
 private:
 	void onKeyDown(sf::Keyboard::Key key);
 	void onKeyUp(sf::Keyboard::Key key);

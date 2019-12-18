@@ -1,7 +1,6 @@
 #include "DeathState.h"
 #include "PlayState.h"
 
-
 DeathState::DeathState(ResourceManager* rm, GameState* playState):
 	GameState(rm),
 	playState(playState)
@@ -13,10 +12,9 @@ DeathState::DeathState(ResourceManager* rm, GameState* playState):
 	box = new Box(rm->getFont(), "game over", windowWidth/2, windowHeight/2);
 
 	greyBox.setSize(sf::Vector2f(windowWidth, windowHeight));
-	sf::Color color = { 5,5,5, 200 };
+	sf::Color color = { 5,5,5, 150 };
 	greyBox.setFillColor(color);
 }
-
 
 DeathState::~DeathState()
 {
@@ -46,7 +44,6 @@ GameState * DeathState::update(const sf::Time & delta)
 		delete playState;
 		state = new PlayState(rm);
 		delete this;
-		
 	}
 	return state;
 }

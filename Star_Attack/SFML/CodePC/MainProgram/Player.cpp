@@ -108,6 +108,9 @@ void Player::takeDamage()
 
 void Player::onKeyDown(sf::Keyboard::Key key)
 {
+	if (key == sf::Keyboard::Return) {
+		std::cout << getPosition().x << "    " << getPosition().y << std::endl;
+	}
 
 	if (key == up) {
 		goalVelY = -speed;
@@ -118,33 +121,12 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 
 	if (key == right) {
 		goalVelX = speed;
+		animator->setAnimation(TURN_RIGHT, false);
 	}
 	else if (key == left) {
 		goalVelX = -speed;
+		animator->setAnimation(TURN_LEFT, false);
 	}
-	//switch (key)
-	//{
-	//case sf::Keyboard::W:
-	//	goalVelY = -speed;
-	//	break;
-	//case sf::Keyboard::S:
-	//	goalVelY = speed;
-	//	break;
-	//default:
-	//	break;
-	//}
-
-	//switch (key)
-	//{
-	//case sf::Keyboard::D:
-	//	goalVelX = speed;
-	//	break;
-	//case sf::Keyboard::A:
-	//	goalVelX = -speed;
-	//	break;
-	//default:
-	//	break;
-	//}
 
 	if (key == sf::Keyboard::Space) {
 		isShooting = true;
@@ -156,24 +138,34 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 	if (key == up && !sf::Keyboard::isKeyPressed(down) ||
 		key == down && !sf::Keyboard::isKeyPressed(up)) {
 		goalVelY = 0;
+		animator->setAnimation(IDLE, false);
 	}
 	else if (key == up && sf::Keyboard::isKeyPressed(down)) {
 		goalVelY = speed;
+		animator->setAnimation(IDLE, false);
 	}
 	else if (key == down && sf::Keyboard::isKeyPressed(up)) {
 		goalVelY = -speed;
+		animator->setAnimation(IDLE, false);
 	}
 
 	if (key == right && !sf::Keyboard::isKeyPressed(left) ||
 		key == left && !sf::Keyboard::isKeyPressed(right)) {
 		goalVelX = 0;
+		animator->setAnimation(IDLE, false);
 	}
 	else if (key == left && sf::Keyboard::isKeyPressed(right)) {
 		goalVelX = speed;
+		animator->setAnimation(IDLE, false);
 	}
 	else if (key == right && sf::Keyboard::isKeyPressed(left)) {
 		goalVelX = -speed;
+		animator->setAnimation(IDLE, false);
 	}
+
+	//if (key == right || key == left || key == up || key == down) {
+	//	animator->setAnimation(IDLE, false);
+	//}
 
 	if (key == sf::Keyboard::Space) {
 		isShooting = false;

@@ -2,18 +2,15 @@
 #include "DeathState.h"
 
 
-PlayState::PlayState(ResourceManager* rm):
+PlayState::PlayState(ResourceManager* rm) :
 	GameState(rm)
 {
 	playerBH = new BulletHandler();
 	enemyBh = new BulletHandler();
-	sf::Vector2f screenDimensions = { static_cast<float>(rm->getWindowWidth()) , static_cast<float>(rm->getWindowHeight())};
+	sf::Vector2f screenDimensions = { static_cast<float>(rm->getWindowWidth()) , static_cast<float>(rm->getWindowHeight()) };
 	enemy = new Enemy(GameState::rm->getBossTexture(), screenDimensions, rm, enemyBh);
 	player = new Player(GameState::rm->getPlayerTexture(), playerBH, rm, enemy);
-
-	bgr = new sf::Sprite();
-	bgr->setTexture(*rm->getBgrTexture());
-	bgr->setScale(sf::Vector2f(4.f, 4.f));
+	rm->resetBgrImage();
 }
 
 PlayState::~PlayState()
@@ -22,9 +19,6 @@ PlayState::~PlayState()
 	delete enemy;
 	delete playerBH;
 	delete enemyBh;
-	delete bgr;
-
-
 }
 
 GameState* PlayState::handleEvent(const sf::Event & event)
@@ -58,7 +52,7 @@ GameState* PlayState::update(const sf::Time & delta)
 
 void PlayState::render(sf::RenderWindow & window) const
 {
-	window.draw(*bgr);
+	window.draw(*rm->getBgrSprite());
 	playerBH->render(window);
 	if (enemy->getIsAlive()) {
 		enemyBh->render(window);

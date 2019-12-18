@@ -13,7 +13,11 @@ ResourceManager::~ResourceManager()
 	delete BossTexture;
 	delete whiteBallTexture;
 	delete redBallTexture;
-	delete bgr;
+
+	delete bgrImage;
+	delete bgrImageOrig;
+	delete bgrTexture;
+	delete bgrSprite;
 
 }
 int ResourceManager::getWindowWidth() const
@@ -49,9 +53,47 @@ sf::Texture * ResourceManager::getRedBallTexture()
 	return redBallTexture;
 }
 
+sf::Image * ResourceManager::getBgrImage()
+{
+	return bgrImage;
+}
+
+sf::Image * ResourceManager::getBgrImageOrig()
+{
+	return bgrImageOrig;
+}
+
 sf::Texture * ResourceManager::getBgrTexture()
 {
-	return bgr;
+	return bgrTexture;
+}
+
+sf::Sprite * ResourceManager::getBgrSprite()
+{
+	return bgrSprite;
+}
+
+void ResourceManager::resetBgrImage()
+{
+	for (unsigned int x = 0; x < bgrImage->getSize().x; ++x) {
+		for (unsigned int y = 0; y < bgrImage->getSize().y; ++y) {
+			sf::Color color = bgrImageOrig->getPixel(x, y);
+			bgrImage->setPixel(x,y,color);
+		}
+	}
+	bgrTexture->loadFromImage(*bgrImage);
+}
+
+void ResourceManager::setupBgrImage(sf::Image * image)
+{
+	this->bgrImageOrig = new sf::Image(*image);
+	this->bgrImage = image;
+	bgrSprite = new sf::Sprite();
+	bgrTexture = new sf::Texture();
+
+	bgrTexture->loadFromImage(*bgrImage);
+	bgrSprite->setTexture(*bgrTexture);
+
 }
 
 void ResourceManager::setup(int windowWidth, int windowHeight)
@@ -64,7 +106,7 @@ void ResourceManager::setup(int windowWidth, int windowHeight)
 		throw std::runtime_error("Could not load font");
 	}
 	playerTexture = new sf::Texture();
-	if (!playerTexture->loadFromFile("../Sprites/ship_piskel.png")) {
+	if (!playerTexture->loadFromFile("../Sprites/player.png")) {
 		throw std::runtime_error("Could not load player texture");
 	}
 	BossTexture = new sf::Texture();
@@ -77,10 +119,6 @@ void ResourceManager::setup(int windowWidth, int windowHeight)
 	}
 	redBallTexture = new sf::Texture();
 	if (!redBallTexture->loadFromFile("../Sprites/Curseless.png")) {
-		throw std::runtime_error("Could not load white ball texture");
-	}
-	bgr = new sf::Texture();
-	if (!bgr->loadFromFile("../Sprites/bgr_pixel.png")) {
 		throw std::runtime_error("Could not load white ball texture");
 	}
 }

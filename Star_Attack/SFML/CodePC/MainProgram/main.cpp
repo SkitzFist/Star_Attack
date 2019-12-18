@@ -25,7 +25,7 @@ int main()
 	}
 	catch (const std::runtime_error &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << "ERROR: " <<  e.what() << std::endl;
 	}
 	catch (...) {
 		std::cerr << "Unknown Error" << std::endl;
