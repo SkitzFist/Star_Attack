@@ -128,7 +128,8 @@ void CircleState::updateHealthBar()
 				image->getPixel(x, y).g > 0 &&
 				image->getPixel(x, y).b > 0) {
 
-				image->setPixel(x, y, sf::Color::Red);
+				sf::Color color = { 128,2,0,255 };
+				image->setPixel(x, y, color);
 			}
 		}
 		offset += angle;
