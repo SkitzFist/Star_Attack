@@ -8,7 +8,7 @@ GameObject::GameObject(sf::Texture* texture, int spriteColumns, int spriteRows)
 	sprite->setTexture(*texture);
 	if (spriteColumns != 1 && spriteRows != 1) {
 		
-		sprite->setOrigin(sprite->getGlobalBounds().width / 4, sprite->getGlobalBounds().height / 4);
+		sprite->setOrigin(sprite->getGlobalBounds().width / 4, sprite->getGlobalBounds().height / 4 - 6);
 	}
 	else {
 		sprite->setOrigin(sprite->getGlobalBounds().width / 2, sprite->getGlobalBounds().height / 2);

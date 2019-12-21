@@ -39,8 +39,9 @@ bool Bullet::getCanDelete() const
 
 void Bullet::update(sf::Time delta)
 {
-	updateBullet(delta);
+	
 	move();
+	updateBullet(delta);
 }
 
 	

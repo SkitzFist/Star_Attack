@@ -1,8 +1,6 @@
 #include "Game.h"
 #include "MenuState.h"
 #include "TestScene.h"
-#include <chrono>
-#include <thread>
 
 Game::Game():
 	timePerFrame(sf::seconds(1.0f / 60.0f)),
@@ -19,7 +17,7 @@ Game::Game():
 	window.create(fullscreenModes.front(), "Star Attack", styles);
 	window.setMouseCursorVisible(false);
 	
-	currentState = new TestScene(rm);
+	currentState = new MenuState(rm);
 	clock.restart();
 }
 
@@ -37,7 +35,7 @@ void Game::run()
 		handleEvent();
 		update();
 		render();
-		//std::this_thread::sleep_for(std::chrono::seconds(1/60));
+		
 	}
 }
 
@@ -57,8 +55,12 @@ void Game::handleEvent()
 void Game::update()
 {
 	elapsedTime += clock.restart();
-	if (elapsedTime > timePerFrame) {
-		currentState = currentState->update(elapsedTime);
+	if (elapsedTime >= timePerFrame) {
+		float deltaTime = static_cast<float>(
+			fmin(static_cast<double>(timePerFrame.asSeconds()),
+				static_cast<double>(elapsedTime.asSeconds())));
+		sf::Time dt = sf::seconds(deltaTime);
+		currentState = currentState->update(dt);
 		elapsedTime -= timePerFrame;
 	}
 }
