@@ -18,8 +18,9 @@ Game::Game():
 
 	window.create(fullscreenModes.front(), "Star Attack", styles);
 	window.setMouseCursorVisible(false);
-
-	currentState = new MenuState(rm);
+	
+	currentState = new TestScene(rm);
+	clock.restart();
 }
 
 
@@ -36,6 +37,7 @@ void Game::run()
 		handleEvent();
 		update();
 		render();
+		//std::this_thread::sleep_for(std::chrono::seconds(1/60));
 	}
 }
 
@@ -55,7 +57,7 @@ void Game::handleEvent()
 void Game::update()
 {
 	elapsedTime += clock.restart();
-	while (elapsedTime >= timePerFrame) {
+	if (elapsedTime > timePerFrame) {
 		currentState = currentState->update(elapsedTime);
 		elapsedTime -= timePerFrame;
 	}
