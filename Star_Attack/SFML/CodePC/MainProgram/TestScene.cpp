@@ -1,13 +1,21 @@
 #include "TestScene.h"
 #include "normalBullet.h"
-
+#include <string>
 
 TestScene::TestScene(ResourceManager* rm):
 	GameState(rm)
 {
 	bh = new BulletHandler();
 
+	font.loadFromFile("../Fonts/Lemon.otf");
+	nrOfBullets.setFont(font);
 	
+	sf::Vector2f pos{
+		static_cast<float>(rm->getWindowWidth() / 2),
+		40.f
+	};
+	nrOfBullets.setPosition(pos);
+	nrOfBullets.setCharacterSize((unsigned)52);
 }
 
 
@@ -59,11 +67,13 @@ GameState * TestScene::update(const sf::Time & delta)
 	GameState* state = this;
 
 	bh->update(delta, rm);
+	nrOfBullets.setString(std::to_string(bh->getNrOf()));
 	return state;
 }
 
 void TestScene::render(sf::RenderWindow & window) const
 {
 	bh->render(window);
+	window.draw(nrOfBullets);
 }
 	

@@ -16,5 +16,7 @@ public:
 
 private:
 	BulletHandler* bh;
+	sf::Text nrOfBullets;
+	sf::Font font;
 };
 

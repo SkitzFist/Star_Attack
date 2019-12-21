@@ -36,7 +36,6 @@ void Game::run()
 		handleEvent();
 		update();
 		render();
-		std::this_thread::sleep_for(std::chrono::microseconds(timePerFrame.asMicroseconds()));
 	}
 }
 
@@ -56,9 +55,9 @@ void Game::handleEvent()
 void Game::update()
 {
 	elapsedTime += clock.restart();
-	if (elapsedTime > timePerFrame) {
-		currentState = currentState->update(elapsedTime); //Todo: Look into delta time
-		elapsedTime = sf::Time::Zero;
+	while (elapsedTime >= timePerFrame) {
+		currentState = currentState->update(elapsedTime);
+		elapsedTime -= timePerFrame;
 	}
 }
 

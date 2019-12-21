@@ -11,6 +11,7 @@ PlayState::PlayState(ResourceManager* rm) :
 	enemy = new Enemy(GameState::rm->getBossTexture(), screenDimensions, rm, enemyBh);
 	player = new Player(GameState::rm->getPlayerTexture(), playerBH, rm, enemy);
 	rm->resetBgrImage();
+	canStart = false;
 }
 
 PlayState::~PlayState()
@@ -23,6 +24,9 @@ PlayState::~PlayState()
 
 GameState* PlayState::handleEvent(const sf::Event & event)
 {
+	if (event.type == sf::Event::KeyPressed) {
+		canStart = true;
+	}
 	player->input(event);
 	return this;
 }
@@ -34,19 +38,21 @@ GameState* PlayState::update(const sf::Time & delta)
 	player->updateObject(delta);
 	player->boundToWindow(rm);
 
-	if (enemy->getIsAlive()) {
-		enemy->updateObject(delta);
-		enemyBh->update(delta, rm);
-		collision.radiusCheckBetween(enemyBh, player);
+	if (canStart) {
+
+		if (enemy->getIsAlive()) {
+			enemy->updateObject(delta);
+			enemyBh->update(delta, rm);
+			collision.radiusCheckBetween(enemyBh, player);
+		}
+
+		playerBH->update(delta, rm);
+		collision.checkBetween(playerBH, enemy);
+
+		if (!player->getIsAlive()) {
+			state = new DeathState(rm, this);
+		}
 	}
-
-	playerBH->update(delta, rm);
-	collision.checkBetween(playerBH, enemy);
-
-	if (!player->getIsAlive()) {
-		state = new DeathState(rm, this);
-	}
-
 	return state;
 }
 

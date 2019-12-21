@@ -5,12 +5,15 @@
 FractalBullet::FractalBullet(sf::Texture* texture, BulletHandler* bh) :
 	Bullet(texture)
 {
+	//config
+	lifeTime = sf::seconds(1.f);
+	angle = 32.02f;
+
+	//setup
+	duration = sf::Time::Zero;
 	this->bh = bh;
 	this->texture = texture;
-	lifeTime = sf::seconds(0.90f);
-	duration = sf::Time::Zero;
 }
-
 
 FractalBullet::~FractalBullet()
 {
@@ -27,11 +30,9 @@ void FractalBullet::updateBullet(sf::Time delta)
 void FractalBullet::fractal()
 {
 
-	float angle = 15.f;
 	const float PI = 3.141592f;
 	float dirAngle = atan2(dir.y, dir.x);
 	dirAngle *= 180 / PI;
-	std::cout << dirAngle << std::endl;
 	float newAngle = (dirAngle + angle) * PI / 180;
 	sf::Vector2f newDir{
 		cos(newAngle),

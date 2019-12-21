@@ -9,9 +9,9 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	//config
 	float startX = 300.f;
 	float startY = 300.f;
-	speed = 4.5f;
+	speed = 4.f;
 	float timeBetweenShots = 0.3f;
-	addToHealth(5);
+	addToHealth(500);
 
 	//controls
 	up = sf::Keyboard::W;
@@ -121,11 +121,11 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 
 	if (key == right) {
 		goalVelX = speed;
-		animator->setAnimation(TURN_RIGHT, false);
+		//animator->setAnimation(TURN_RIGHT, false);
 	}
 	else if (key == left) {
 		goalVelX = -speed;
-		animator->setAnimation(TURN_LEFT, false);
+		//animator->setAnimation(TURN_LEFT, false);
 	}
 
 	if (key == sf::Keyboard::Space) {
@@ -138,29 +138,23 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 	if (key == up && !sf::Keyboard::isKeyPressed(down) ||
 		key == down && !sf::Keyboard::isKeyPressed(up)) {
 		goalVelY = 0;
-		animator->setAnimation(IDLE, false);
 	}
 	else if (key == up && sf::Keyboard::isKeyPressed(down)) {
 		goalVelY = speed;
-		animator->setAnimation(IDLE, false);
 	}
 	else if (key == down && sf::Keyboard::isKeyPressed(up)) {
 		goalVelY = -speed;
-		animator->setAnimation(IDLE, false);
 	}
 
 	if (key == right && !sf::Keyboard::isKeyPressed(left) ||
 		key == left && !sf::Keyboard::isKeyPressed(right)) {
 		goalVelX = 0;
-		animator->setAnimation(IDLE, false);
 	}
 	else if (key == left && sf::Keyboard::isKeyPressed(right)) {
 		goalVelX = speed;
-		animator->setAnimation(IDLE, false);
 	}
 	else if (key == right && sf::Keyboard::isKeyPressed(left)) {
 		goalVelX = -speed;
-		animator->setAnimation(IDLE, false);
 	}
 
 	//if (key == right || key == left || key == up || key == down) {

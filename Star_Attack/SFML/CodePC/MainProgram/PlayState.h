@@ -23,5 +23,6 @@ private:
 	Enemy* enemy;
 	BulletHandler* enemyBh;
 	Collision collision;
+	bool canStart;
 };
 

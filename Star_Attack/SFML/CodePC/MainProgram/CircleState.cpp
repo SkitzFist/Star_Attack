@@ -95,14 +95,11 @@ void CircleState::takeDamage()
 		if (inc == 4 && nrOfAngles < 50 ) {
 			++nrOfAngles;
 			inc = 0;
-			std::cout << "Angles: " << nrOfAngles << std::endl;
 		}
 		
 		timeBetweenShots -= 0.015f;
 		if (timeBetweenShots <= 0.05) {
 			timeBetweenShots = 1.2f;
-			static int count = 0;
-			std::cout << ++count << std::endl;
 		}
 
 		currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh, true);

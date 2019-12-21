@@ -12,7 +12,7 @@ public:
 	virtual void updateBullet(sf::Time delta) override;
 
 private:
-	int index;
+	float angle;
 	BulletHandler* bh;
 
 	sf::Time lifeTime;
