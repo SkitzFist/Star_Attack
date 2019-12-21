@@ -25,8 +25,10 @@ void BulletHandler::update(sf::Time delta, ResourceManager* rm)
 	offset = 10.f;
 	for (int i = 0; i < nrOf; ++i) {
 		bullets[i]->update(delta);
-
-		if (bullets[i]->getPosition().x < 0 - offset || bullets[i]->getPosition().x > rm->getWindowWidth() + offset ||
+		if (bullets[i]->getCanDelete()) {
+			removeBulletAt(i);
+		}
+		else if (bullets[i]->getPosition().x < 0 - offset || bullets[i]->getPosition().x > rm->getWindowWidth() + offset ||
 			bullets[i]->getPosition().y < 0 - offset || bullets[i]->getPosition().y > rm->getWindowHeight() + offset) {
 			removeBulletAt(i);
 		}

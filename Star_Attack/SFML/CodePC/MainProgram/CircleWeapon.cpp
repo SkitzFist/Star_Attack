@@ -1,5 +1,5 @@
 #include "CircleWeapon.h"
-
+#include "normalBullet.h"
 
 
 CircleWeapon::CircleWeapon(float timeBetweenShots, ResourceManager* rm, BulletHandler* bh, bool isSpiral):
@@ -78,7 +78,7 @@ void CircleWeapon::Setup(sf::Vector2f pos, int nrOfAngles)
 void CircleWeapon::fireBoss(sf::Vector2f pos){
 
 	for (int i = 0; i < nrOfAngles; ++i) {
-		Bullet* bullet = new Bullet(rm->getRedBallTexture());
+		Bullet* bullet = new normalBullet(rm->getRedBallTexture());
 		bullet->setPosition(pos);
 		bullet->setDirection(angles[i]);
 		bh->addBullet(bullet);

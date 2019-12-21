@@ -14,15 +14,15 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	addToHealth(5);
 
 	//controls
-	//up = sf::Keyboard::W;
-	//down = sf::Keyboard::S;
-	//left = sf::Keyboard::A;
-	//right = sf::Keyboard::D;
+	up = sf::Keyboard::W;
+	down = sf::Keyboard::S;
+	left = sf::Keyboard::A;
+	right = sf::Keyboard::D;
 
-	up = sf::Keyboard::Up;
-	down = sf::Keyboard::Down;
-	left = sf::Keyboard::Left;
-	right = sf::Keyboard::Right;
+	//up = sf::Keyboard::Up;
+	//down = sf::Keyboard::Down;
+	//left = sf::Keyboard::Left;
+	//right = sf::Keyboard::Right;
 
 	//setup
 	setPosition(startX, startY);

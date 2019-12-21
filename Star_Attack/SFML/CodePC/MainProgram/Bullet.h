@@ -9,13 +9,18 @@ public:
 	virtual ~Bullet();
 	void setDirection(sf::Vector2f dir);
 	bool isColliding(const GameObject &go);
+	bool getCanDelete() const;
 	// Inherited via Entity
 	virtual void update(sf::Time delta) override;
+	virtual void updateBullet(sf::Time delta) = 0;
 	virtual void move() override;
 
-private:
+protected:
 	sf::Vector2f dir;
-	int id;
+	bool canDelete;
+
+private:
 	float speed;
+
 };
 

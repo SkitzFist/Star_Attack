@@ -1,5 +1,5 @@
 #include "PlayerWeapon.h"
-
+#include "normalBullet.h"
 
 
 PlayerWeapon::PlayerWeapon(float timeBetweenShots, ResourceManager* rm, BulletHandler* bh):
@@ -15,7 +15,7 @@ PlayerWeapon::~PlayerWeapon()
 
 void PlayerWeapon::fire(sf::Vector2f startPos, sf::Vector2f dir)
 {
-	Bullet* bullet = new Bullet(rm->getWhiteBallTexture());
+	Bullet* bullet = new normalBullet(rm->getWhiteBallTexture());
 	bullet->setPosition(startPos.x, startPos.y);
 	bullet->setDirection(dir);
 	bh->addBullet(bullet);

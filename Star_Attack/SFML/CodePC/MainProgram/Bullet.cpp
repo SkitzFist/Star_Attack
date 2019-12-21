@@ -7,8 +7,10 @@ Bullet::Bullet(sf::Texture* texture):
 {
 	//config
 	dir = { 0.f,0.f };
-	id = 0;
 	speed = 5.f;
+
+	//setup
+	canDelete = false;
 }
 
 
@@ -30,11 +32,18 @@ bool Bullet::isColliding(const GameObject & go)
 	return false;
 }
 
+bool Bullet::getCanDelete() const
+{
+	return canDelete;
+}
+
 void Bullet::update(sf::Time delta)
 {
+	updateBullet(delta);
 	move();
 }
 
+	
 void Bullet::move()
 {
 	moveSprite(dir, speed);

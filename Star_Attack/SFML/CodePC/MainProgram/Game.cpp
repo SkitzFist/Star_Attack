@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "MenuState.h"
+#include "TestScene.h"
 #include <chrono>
 #include <thread>
 
@@ -18,7 +19,7 @@ Game::Game():
 	window.create(fullscreenModes.front(), "Star Attack", styles);
 	window.setMouseCursorVisible(false);
 
-	currentState = new MenuState(rm);
+	currentState = new TestScene(rm);
 }
 
 
@@ -64,7 +65,7 @@ void Game::update()
 
 void Game::render()
 {
-	window.clear();
+	//window.clear();
 	currentState->render(window);
 	window.display();
 }

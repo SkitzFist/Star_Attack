@@ -180,16 +180,19 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyState.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FractalBullet.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="normalBullet.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerWeapon.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="CircleWeapon.cpp" />
+    <ClCompile Include="TestScene.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,15 +207,18 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyState.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="FractalBullet.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="normalBullet.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerWeapon.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="CircleWeapon.h" />
+    <ClInclude Include="TestScene.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

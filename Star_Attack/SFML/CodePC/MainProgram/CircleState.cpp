@@ -105,7 +105,6 @@ void CircleState::takeDamage()
 			std::cout << ++count << std::endl;
 		}
 
-
 		currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh, true);
 		currentWeapon->Setup(pos, nrOfAngles);
 		health = 5;

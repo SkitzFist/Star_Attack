@@ -61,6 +61,15 @@
     <Filter Include="Game States\Death State">
       <UniqueIdentifier>{4b60f6ec-ca86-486a-966a-d4129d81b72b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game States\TestScene">
+      <UniqueIdentifier>{d4f55b74-8d87-4965-a667-a6cb8de3d053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Bullets\NormalBullet">
+      <UniqueIdentifier>{f03211b3-839f-4c8d-82cf-77fb1fd1e854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObjects\Bullets\Fractal Bullet">
+      <UniqueIdentifier>{5c8719cb-2b95-4226-b141-7239ff8edd0e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -129,6 +138,15 @@
     <ClCompile Include="Animator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TestScene.cpp">
+      <Filter>Game States\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="normalBullet.cpp">
+      <Filter>GameObjects\Bullets\NormalBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="FractalBullet.cpp">
+      <Filter>GameObjects\Bullets\Fractal Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -193,6 +211,15 @@
     </ClInclude>
     <ClInclude Include="Animator.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScene.h">
+      <Filter>Game States\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="normalBullet.h">
+      <Filter>GameObjects\Bullets\NormalBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="FractalBullet.h">
+      <Filter>GameObjects\Bullets\Fractal Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
