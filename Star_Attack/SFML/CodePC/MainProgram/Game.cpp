@@ -19,7 +19,7 @@ Game::Game():
 	window.create(fullscreenModes.front(), "Star Attack", styles);
 	window.setMouseCursorVisible(false);
 
-	currentState = new TestScene(rm);
+	currentState = new MenuState(rm);
 }
 
 
@@ -65,7 +65,7 @@ void Game::update()
 
 void Game::render()
 {
-	//window.clear();
+	window.clear();
 	currentState->render(window);
 	window.display();
 }
