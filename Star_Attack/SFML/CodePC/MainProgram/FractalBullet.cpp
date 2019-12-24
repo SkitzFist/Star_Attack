@@ -6,8 +6,8 @@ FractalBullet::FractalBullet(sf::Texture* texture, BulletHandler* bh) :
 	Bullet(texture)
 {
 	//config
-	lifeTime = sf::seconds(1.f);
-	angle = 35.f;
+	lifeTime = sf::seconds(0.945f);  //Best: 0.945s and 35.82809 angle
+	angle = 35.82809f;
 
 	//setup
 	duration = sf::Time::Zero;

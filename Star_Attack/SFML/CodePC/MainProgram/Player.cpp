@@ -156,11 +156,7 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 	else if (key == right && sf::Keyboard::isKeyPressed(left)) {
 		goalVelX = -speed;
 	}
-
-	//if (key == right || key == left || key == up || key == down) {
-	//	animator->setAnimation(IDLE, false);
-	//}
-
+	
 	if (key == sf::Keyboard::Space) {
 		isShooting = false;
 	}
