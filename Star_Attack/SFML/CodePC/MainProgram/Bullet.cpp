@@ -7,10 +7,11 @@ Bullet::Bullet(sf::Texture* texture):
 {
 	//config
 	dir = { 0.f,0.f };
-	speed = 5.f;
+	speed = 300.f;
 
 	//setup
 	canDelete = false;
+	dt = sf::Time::Zero;
 }
 
 
@@ -39,7 +40,7 @@ bool Bullet::getCanDelete() const
 
 void Bullet::update(sf::Time delta)
 {
-	
+	dt = delta;
 	move();
 	updateBullet(delta);
 }
@@ -47,5 +48,5 @@ void Bullet::update(sf::Time delta)
 	
 void Bullet::move()
 {
-	moveSprite(dir, speed);
+	moveSprite(dir, speed * dt.asSeconds());
 }

@@ -24,7 +24,7 @@ void Enemy::updateObject(sf::Time delta)
 	currentState = currentState->update(delta);
 }
 
-void Enemy::moveObject()
+void Enemy::moveObject(sf::Time delta)
 {
 }
 

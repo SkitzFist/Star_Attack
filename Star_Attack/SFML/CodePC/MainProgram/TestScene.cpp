@@ -1,6 +1,7 @@
 #include "TestScene.h"
 #include "normalBullet.h"
 #include <string>
+#include <thread>
 
 TestScene::TestScene(ResourceManager* rm):
 	GameState(rm)
@@ -68,7 +69,6 @@ GameState * TestScene::handleEvent(const sf::Event & event)
 GameState * TestScene::update(const sf::Time & delta)
 {
 	GameState* state = this;
-
 	bh->update(delta, rm);
 	nrOfBullets.setString(std::to_string(bh->getNrOf()));
 	return state;

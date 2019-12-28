@@ -54,14 +54,28 @@ void Game::handleEvent()
 void Game::update()
 {
 	elapsedTime += clock.restart();
-	while (elapsedTime >= timePerFrame) {
+
+	if (elapsedTime >= timePerFrame) {
 		float deltaTime = static_cast<float>(
-			fmin(static_cast<double>(timePerFrame.asSeconds()),
-				static_cast<double>(elapsedTime.asSeconds())));
+			fmin(
+				static_cast<double>(timePerFrame.asSeconds()),
+				static_cast<double>(elapsedTime.asSeconds())
+			)
+		);
+
 		sf::Time dt = sf::seconds(deltaTime);
-		currentState = currentState->update(dt);
+		currentState->update(dt);
 		elapsedTime -= dt;
 	}
+
+	//while (elapsedTime >= timePerFrame) {
+	//	float deltaTime = static_cast<float>(
+	//		fmin(static_cast<double>(timePerFrame.asSeconds()),
+	//			static_cast<double>(elapsedTime.asSeconds())));
+	//	sf::Time dt = sf::seconds(deltaTime);
+	//	currentState = currentState->update(dt);
+	//	elapsedTime -= dt;
+	//}
 }
 
 

@@ -21,6 +21,7 @@ protected:
 
 private:
 	float speed;
+	sf::Time dt;
 
 };
 

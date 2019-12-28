@@ -9,7 +9,7 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	//config
 	float startX = 300.f;
 	float startY = 300.f;
-	speed = 4.f;
+	speed = 15.f;
 	float timeBetweenShots = 0.3f;
 	addToHealth(500);
 
@@ -93,9 +93,10 @@ void Player::updateObject(sf::Time delta)
 	animator->update(delta);
 }
 
-void Player::moveObject()
+void Player::moveObject(sf::Time delta)
 {
-	moveSprite(velX, velY);
+	sf::Vector2f dir{ velX, velY };
+	moveSprite(dir, speed * delta.asSeconds());
 }
 
 void Player::takeDamage()
@@ -166,7 +167,7 @@ void Player::engageMove(sf::Time delta)
 {
 	velY = lerpMove(goalVelY, velY, (float)delta.asMicroseconds());
 	velX = lerpMove(goalVelX, velX, (float)delta.asMicroseconds());
-	move();
+	moveObject(delta);
 }
 
 float Player::lerpMove(float goal, float current, float delta)

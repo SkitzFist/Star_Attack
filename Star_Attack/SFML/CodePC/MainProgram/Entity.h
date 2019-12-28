@@ -16,7 +16,7 @@ protected:
 	virtual void update(sf::Time delta) override;
 	virtual void updateObject(sf::Time delta) = 0;
 	virtual void move() override;
-	virtual void moveObject() = 0;
+	virtual void moveObject(sf::Time delta) = 0;
 	void setIsAlive(bool isAlive);
 	int getHealth() const;
 	void addToHealth(int value);

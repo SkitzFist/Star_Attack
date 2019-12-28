@@ -26,7 +26,7 @@ void Entity::update(sf::Time delta)
 
 void Entity::move()
 {
-	moveObject();
+	//moveObject();
 }
 
 void Entity::setIsAlive(bool isAlive)

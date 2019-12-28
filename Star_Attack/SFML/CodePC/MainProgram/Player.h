@@ -17,7 +17,7 @@ public:
 	void boundToWindow(ResourceManager* rm);
 	// Inherited via Entity
 	virtual void updateObject(sf::Time delta) override;
-	virtual void moveObject() override;
+	virtual void moveObject(sf::Time delta) override;
 	virtual void takeDamage();
 private:
 	float speed;
