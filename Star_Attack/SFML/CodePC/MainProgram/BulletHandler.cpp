@@ -80,13 +80,6 @@ void BulletHandler::removeBulletAt(int index)
 	bullets[nrOf] = nullptr;
 }
 
-void BulletHandler::shrinkArrFrom(int index)
-{
-	for (int i = index; i < nrOf - 1; ++i) {
-		bullets[i] = bullets[i + 1];
-	}
-}
-
 void BulletHandler::expandArr()
 {
 	capacity += 20;

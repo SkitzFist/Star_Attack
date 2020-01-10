@@ -7,7 +7,7 @@ Bullet::Bullet(sf::Texture* texture):
 {
 	//config
 	dir = { 0.f,0.f };
-	speed = 300.f;
+	speed = 4.5f;
 
 	//setup
 	canDelete = false;
@@ -48,5 +48,5 @@ void Bullet::update(sf::Time delta)
 	
 void Bullet::move()
 {
-	moveSprite(dir, speed * dt.asSeconds());
+	moveSprite(dir, speed);
 }

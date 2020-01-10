@@ -64,18 +64,9 @@ void Game::update()
 		);
 
 		sf::Time dt = sf::seconds(deltaTime);
-		currentState->update(dt);
-		elapsedTime -= dt;
+		currentState->update(timePerFrame);
+		elapsedTime -= elapsedTime;
 	}
-
-	//while (elapsedTime >= timePerFrame) {
-	//	float deltaTime = static_cast<float>(
-	//		fmin(static_cast<double>(timePerFrame.asSeconds()),
-	//			static_cast<double>(elapsedTime.asSeconds())));
-	//	sf::Time dt = sf::seconds(deltaTime);
-	//	currentState = currentState->update(dt);
-	//	elapsedTime -= dt;
-	//}
 }
 
 
