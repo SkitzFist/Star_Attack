@@ -21,7 +21,6 @@ private:
 	Bullet** bullets;
 
 private:
-	void shrinkArrFrom(int index);
 	void expandArr();
 };
 

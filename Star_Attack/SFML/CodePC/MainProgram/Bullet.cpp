@@ -7,7 +7,6 @@ Bullet::Bullet(sf::Texture* texture):
 {
 	//config
 	dir = { 0.f,0.f };
-	id = 0;
 	speed = 5.f;
 }
 

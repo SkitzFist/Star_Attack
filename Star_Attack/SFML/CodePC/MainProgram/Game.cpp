@@ -56,7 +56,7 @@ void Game::update()
 {
 	elapsedTime += clock.restart();
 	if (elapsedTime > timePerFrame) {
-		currentState = currentState->update(elapsedTime); //Todo: Look into delta time
+		currentState = currentState->update(elapsedTime); 
 		elapsedTime = sf::Time::Zero;
 	}
 }

@@ -15,11 +15,11 @@ public:
 	void setTimeBetweenShots(float value);
 protected:
 	float timeLeft;
+	ResourceManager* rm;
+	BulletHandler* bh;
 
 protected:
 	float getTimeBetweenShots() const;
-	ResourceManager* rm;
-	BulletHandler* bh;
 
 private:
 	float timeBetweenShots;

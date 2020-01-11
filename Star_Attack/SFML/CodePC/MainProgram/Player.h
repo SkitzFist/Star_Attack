@@ -37,6 +37,11 @@ private:
 	const int TURN_LEFT = 1;
 	const int TURN_RIGHT = 2;
 
+	sf::Keyboard::Key up;
+	sf::Keyboard::Key down;
+	sf::Keyboard::Key right;
+	sf::Keyboard::Key left;
+
 private:
 	void onKeyDown(sf::Keyboard::Key key);
 	void onKeyUp(sf::Keyboard::Key key);
@@ -44,8 +49,5 @@ private:
 	float lerpMove(float goal, float current, float delta);
 	void shoot();
 
-	sf::Keyboard::Key up;
-	sf::Keyboard::Key down;
-	sf::Keyboard::Key right;
-	sf::Keyboard::Key left;
+
 };

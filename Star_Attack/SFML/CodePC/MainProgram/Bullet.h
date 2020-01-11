@@ -15,7 +15,6 @@ public:
 
 private:
 	sf::Vector2f dir;
-	int id;
 	float speed;
 };
 
