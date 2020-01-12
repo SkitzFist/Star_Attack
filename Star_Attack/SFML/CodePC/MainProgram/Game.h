@@ -18,6 +18,7 @@ private:
 
 	GameState *currentState;
 	ResourceManager* rm;
+
 private:
 	void handleEvent();
 	void update();

@@ -16,6 +16,7 @@ private:
 	sf::Texture* texture;
 	float frameTime;
 	bool isLooping;
+	int currentFrame;
 
 	int maxWidth;
 	int maxHeight;

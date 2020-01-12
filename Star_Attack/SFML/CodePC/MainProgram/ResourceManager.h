@@ -16,6 +16,7 @@ public:
 	sf::Texture* getWhiteBallTexture();
 	sf::Texture* getRedBallTexture();
 
+	sf::Image* getTile();
 	sf::Image* getBgrImage();
 	sf::Image* getBgrImageOrig();
 	sf::Texture* getBgrTexture();
@@ -34,6 +35,7 @@ private:
 	sf::Font* font;
 
 	//bgrImage
+	sf::Image* tile;
 	sf::Image* bgrImageOrig;
 	sf::Image* bgrImage;
 	sf::Texture* bgrTexture;

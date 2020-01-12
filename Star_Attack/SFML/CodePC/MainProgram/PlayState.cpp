@@ -1,7 +1,6 @@
 #include "PlayState.h"
 #include "DeathState.h"
 
-
 PlayState::PlayState(ResourceManager* rm) :
 	GameState(rm)
 {
@@ -23,13 +22,14 @@ PlayState::~PlayState()
 
 GameState* PlayState::handleEvent(const sf::Event & event)
 {
+	state = this;
 	player->input(event);
-	return this;
+	return state;
 }
 
 GameState* PlayState::update(const sf::Time & delta)
 {
-	GameState* state = this;
+	state = this;
 	player->rotateTowards(*enemy);
 	player->updateObject(delta);
 	player->boundToWindow(rm);

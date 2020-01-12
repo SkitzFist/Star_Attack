@@ -14,8 +14,19 @@ public:
 	virtual void render(sf::RenderWindow & window) const override;
 
 private:
+	enum boxes
+	{
+		play = 0,
+		exit = 1
+	};
+
 	sf::Text text;
 	Box* playBox;
 	Box* exitBox;
+
+	boxes currentBox;
+private:
+
+	void switchBox();
 };
 

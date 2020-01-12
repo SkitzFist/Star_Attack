@@ -18,16 +18,19 @@ ResourceManager::~ResourceManager()
 	delete bgrImageOrig;
 	delete bgrTexture;
 	delete bgrSprite;
+	delete tile;
 
 }
 int ResourceManager::getWindowWidth() const
 {
 	return windowWidth;
 }
+
 int ResourceManager::getWindowHeight() const
 {
 	return windowHeight;
 }
+
 sf::Font * ResourceManager::getFont()
 {
 	return font;
@@ -51,6 +54,11 @@ sf::Texture * ResourceManager::getWhiteBallTexture()
 sf::Texture * ResourceManager::getRedBallTexture()
 {
 	return redBallTexture;
+}
+
+sf::Image * ResourceManager::getTile()
+{
+	return tile;
 }
 
 sf::Image * ResourceManager::getBgrImage()
@@ -120,6 +128,11 @@ void ResourceManager::setup(int windowWidth, int windowHeight)
 	redBallTexture = new sf::Texture();
 	if (!redBallTexture->loadFromFile("../Sprites/Curseless.png")) {
 		throw std::runtime_error("Could not load white ball texture");
+	}
+
+	tile = new sf::Image();
+	if (!tile->loadFromFile("../Sprites/tile_01.png")) {
+		throw std::runtime_error("Could not load tile image");
 	}
 }
 

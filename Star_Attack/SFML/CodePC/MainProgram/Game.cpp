@@ -44,19 +44,23 @@ void Game::handleEvent()
 	sf::Event event;
 	while (window.pollEvent(event)) {
 
-		if (event.type == sf::Event::Closed ||
-			event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape) {
+		currentState = currentState->handleEvent(event);
+
+		if (event.type == sf::Event::Closed
+			||event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape
+			||currentState == nullptr) {
 			window.close();
 		}
-		currentState = currentState->handleEvent(event);
 	}
 }
 
 void Game::update()
 {
 	elapsedTime += clock.restart();
-	if (elapsedTime > timePerFrame) {
+	if (elapsedTime > timePerFrame && currentState != nullptr) {
+
 		currentState = currentState->update(elapsedTime); 
+
 		elapsedTime = sf::Time::Zero;
 	}
 }
@@ -65,18 +69,15 @@ void Game::update()
 void Game::render()
 {
 	window.clear();
-	currentState->render(window);
+	if (currentState != nullptr) {
+		currentState->render(window);
+	}	
 	window.display();
 }
 
 sf::Image * Game::createBgrImage() const
 {
-	sf::Image* tile;
-	tile = new sf::Image();
-	if (!tile->loadFromFile("../Sprites/tile_01.png")) {
-		throw std::runtime_error("Could not load tile.png");
-	}
-
+	sf::Image* tile = rm->getTile();
 	const int TILE_X = tile->getSize().x;
 	const int TILE_Y = tile->getSize().y;
 
@@ -101,7 +102,5 @@ sf::Image * Game::createBgrImage() const
 			tileXPos = 0;
 		}
 	}
-
-	delete tile;
 	return bgrImage;
 }

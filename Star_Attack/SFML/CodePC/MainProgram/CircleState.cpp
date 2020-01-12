@@ -95,7 +95,6 @@ void CircleState::takeDamage()
 		if (inc == 4 && nrOfAngles < 50 ) {
 			++nrOfAngles;
 			inc = 0;
-			std::cout << "Angles: " << nrOfAngles << std::endl;
 		}
 		
 		timeBetweenShots -= 0.015f;
@@ -123,6 +122,7 @@ void CircleState::updateHealthBar()
 
 		int x = static_cast<int>(round(xPos));
 		int y = static_cast<int>(round(yPos));
+
 		if (isInsideBounds(x, y)) {
 			if (image->getPixel(x, y).r < 40 &&
 				image->getPixel(x, y).g > 0 &&

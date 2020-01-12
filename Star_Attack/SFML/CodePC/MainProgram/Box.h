@@ -10,10 +10,12 @@ public:
 
 	void setPosition(float x, float y);
 	void render(sf::RenderWindow &window);
-
+	void markBox();
+	void unmarkBox();
 private:
 	sf::Text text;
 	sf::RectangleShape box;
 	float boxOffset;
+	float outlineThickness;
 };
 

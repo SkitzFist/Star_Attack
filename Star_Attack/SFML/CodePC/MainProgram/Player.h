@@ -48,6 +48,6 @@ private:
 	void engageMove(sf::Time delta);
 	float lerpMove(float goal, float current, float delta);
 	void shoot();
-
+	void setAnimation();
 
 };

@@ -11,6 +11,7 @@ Animator::Animator(sf::Sprite* sprite, sf::Texture* texture, int columns, int ro
 	intRect = { 0,0, maxWidth / columns, maxHeight / rows};
 	frameTime = 0.5f;
 	isLooping = false;
+	currentFrame = 0;
 }
 
 
@@ -40,8 +41,9 @@ void Animator::update(sf::Time delta)
 
 void Animator::setAnimation(int value, bool isLooping)
 {
-	this->isLooping = isLooping;
-	intRect.top = value * intRect.height;
-	intRect.left = 0;
-
+	if (currentFrame != value) {
+		this->isLooping = isLooping;
+		intRect.top = value * intRect.height;
+		intRect.left = 0;
+	}
 }
