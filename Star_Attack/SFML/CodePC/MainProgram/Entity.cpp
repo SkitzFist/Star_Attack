@@ -2,8 +2,8 @@
 
 
 
-Entity::Entity(sf::Texture* texture, int spriteRows, int spriteColumns):
-	GameObject(texture, spriteRows, spriteColumns)
+Entity::Entity(sf::Texture* texture, int spriteColumns, int spriteRows):
+	GameObject(texture, spriteColumns, spriteRows)
 {
 	isAlive = true;
 }

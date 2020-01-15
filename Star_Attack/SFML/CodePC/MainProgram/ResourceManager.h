@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <iostream> //Todo: delete this
+
 class ResourceManager
 {
 public:
@@ -22,16 +22,18 @@ public:
 	sf::Texture* getBgrTexture();
 	sf::Sprite* getBgrSprite();
 
+	std::string getHighScorePath() const;
 	void resetBgrImage();
 
 	void setupBgrImage(sf::Image* image);
 	void setup(int windowWidth, int windowHeight);
 
 private:
+
 	int windowWidth;
 	int windowHeight;
+
 	//UI
-	
 	sf::Font* font;
 
 	//bgrImage
@@ -50,5 +52,8 @@ private:
 	//Projectiles
 	sf::Texture* whiteBallTexture;
 	sf::Texture* redBallTexture;
+
+	std::string highScorePath;
+
 };
 

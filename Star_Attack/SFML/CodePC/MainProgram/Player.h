@@ -15,10 +15,12 @@ public:
 	void input(const sf::Event &event);
 	void rotateTowards(const Entity &other);
 	void boundToWindow(ResourceManager* rm);
+	int getScore() const;
 	// Inherited via Entity
 	virtual void updateObject(sf::Time delta) override;
 	virtual void moveObject() override;
 	virtual void takeDamage();
+
 private:
 	float speed;
 
@@ -42,6 +44,9 @@ private:
 	sf::Keyboard::Key right;
 	sf::Keyboard::Key left;
 
+	float windowWidth;
+	float windowHeight;
+
 private:
 	void onKeyDown(sf::Keyboard::Key key);
 	void onKeyUp(sf::Keyboard::Key key);
@@ -49,5 +54,8 @@ private:
 	float lerpMove(float goal, float current, float delta);
 	void shoot();
 	void setAnimation();
+
+	int score;
+	void updateScore(sf::Time delta);
 
 };

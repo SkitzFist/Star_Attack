@@ -18,6 +18,7 @@ public:
 	void moveSprite(float velX, float velY);
 	void rotateSprite(float angle);
 	void setSpriteScale(float scale);
+	void centerOrigin();
 	sf::Sprite* getSprite() const;
 	// Inherited via Drawable
 	virtual void draw(sf::RenderTarget & target, sf::RenderStates states) const override;
@@ -25,5 +26,7 @@ public:
 
 private:
 	sf::Sprite* sprite;
+	int columns;
+	int rows;
 };
 

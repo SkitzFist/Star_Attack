@@ -3,13 +3,16 @@
 
 
 Enemy::Enemy(sf::Texture* texture, sf::Vector2f pos, ResourceManager* rm, BulletHandler* bh):
-	Entity(texture, 1,1)
+	Entity(texture, 2,1)
 {
 	//config
-
+	animator = new  Animator(getSprite(), texture, 2, 1);
+	setSpriteScale(3.f);
+	float startYOffset = 15.f;
 	//setup
-	setPosition(pos.x/2, pos.y/2);
 	currentState = new CircleState(rm, bh);
+	animator->setAnimation(0, true);
+	setPosition(pos.x / 2, (pos.y / 2) - startYOffset);
 
 }
 
@@ -21,7 +24,14 @@ Enemy::~Enemy()
 
 void Enemy::updateObject(sf::Time delta)
 {
-	currentState = currentState->update(delta);
+	if (currentState != nullptr) {
+		currentState = currentState->update(delta);
+	}
+	animator->update(delta);
+
+	if (currentState == nullptr) {
+		setIsAlive(false);
+	}
 }
 
 void Enemy::moveObject()
@@ -30,5 +40,9 @@ void Enemy::moveObject()
 
 void Enemy::takeDamage()
 {
-	currentState->takeDamage();
+	if (currentState != nullptr) {
+		currentState->takeDamage();
+	}
+
+
 }

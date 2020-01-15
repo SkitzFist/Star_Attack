@@ -8,12 +8,11 @@ Animator::Animator(sf::Sprite* sprite, sf::Texture* texture, int columns, int ro
 	this->texture = texture;
 	maxWidth = static_cast<int>(texture->getSize().x);
 	maxHeight = static_cast<int>(texture->getSize().y);
-	intRect = { 0,0, maxWidth / columns, maxHeight / rows};
+	intRect = { 0,0, maxWidth / columns, maxHeight / rows };
 	frameTime = 0.5f;
 	isLooping = false;
-	currentFrame = 0;
+	currentFrame = -10;
 }
-
 
 Animator::~Animator()
 {
@@ -27,7 +26,7 @@ void Animator::update(sf::Time delta)
 	while ( timeBuffer.asSeconds() > frameTime)
 	{
 		if (isLooping) {
-			intRect.left = (intRect.left + intRect.width) % intRect.width;
+			intRect.left = (intRect.left + intRect.width) % maxWidth;
 		}
 		else {
 			if (intRect.left < (maxWidth - intRect.width)) {
@@ -45,5 +44,6 @@ void Animator::setAnimation(int value, bool isLooping)
 		this->isLooping = isLooping;
 		intRect.top = value * intRect.height;
 		intRect.left = 0;
+		currentFrame = value;
 	}
 }

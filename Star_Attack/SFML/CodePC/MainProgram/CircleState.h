@@ -22,7 +22,7 @@ private:
 	int healthRadius;
 	int currentHealthRadius;
 	int healthInc;
-	const int POINTS = 600;
+	const int POINTS = 1200;
 	float angle;
 	float offset;
 

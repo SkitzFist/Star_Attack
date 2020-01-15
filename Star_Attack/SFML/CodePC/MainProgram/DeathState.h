@@ -6,7 +6,7 @@ class DeathState :
 	public GameState
 {
 public:
-	DeathState(ResourceManager* rm, GameState* state);
+	DeathState(ResourceManager* rm, GameState* state, std::string text);
 	virtual ~DeathState();
 
 	// Inherited via GameState
@@ -20,5 +20,7 @@ private:
 	bool startNewGame;
 	bool exitGame;
 	sf::RectangleShape greyBox;
+
+	sf::Text score;
 };
 

@@ -6,13 +6,10 @@ GameObject::GameObject(sf::Texture* texture, int spriteColumns, int spriteRows)
 {
 	sprite = new sf::Sprite();
 	sprite->setTexture(*texture);
-	if (spriteColumns != 1 && spriteRows != 1) {
-		
-		sprite->setOrigin(sprite->getGlobalBounds().width / 4, sprite->getGlobalBounds().height / 4);
-	}
-	else {
-		sprite->setOrigin(sprite->getGlobalBounds().width / 2, sprite->getGlobalBounds().height / 2);
-	}
+
+	columns = spriteColumns;
+	rows = spriteRows;
+	centerOrigin();
 }
 
 
@@ -45,7 +42,13 @@ void GameObject::rotateSprite(float angle)
 void GameObject::setSpriteScale(float scale)
 {
 	sprite->setScale(scale, scale);
-	//sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
+}
+
+void GameObject::centerOrigin()
+{
+	float originX = sprite->getGlobalBounds().width / (columns * 2);
+	float originY = sprite->getGlobalBounds().height / (rows * 2);
+	sprite->setOrigin(originX, originY);
 }
 
 sf::Sprite* GameObject::getSprite() const

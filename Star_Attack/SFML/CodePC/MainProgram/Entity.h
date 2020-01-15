@@ -5,7 +5,7 @@
 class Entity : public GameObject
 {
 public:
-	Entity(sf::Texture* texture, int spriteRows, int SpriteHeight);
+	Entity(sf::Texture* texture, int spriteColumns, int spriteRows);
 	virtual ~Entity();
 	virtual void takeDamage() = 0;
 	bool getIsAlive() const;

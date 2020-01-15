@@ -2,7 +2,7 @@
 
 
 Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Enemy* enemy) :
-	Entity(texture, 5, 2),
+	Entity(texture, 2, 3),
 	isShooting(false),
 	enemy(enemy)
 {
@@ -12,12 +12,8 @@ Player::Player(sf::Texture* texture, BulletHandler* bh, ResourceManager* rm, Ene
 	speed = 4.5f;
 	float timeBetweenShots = 0.3f;
 	addToHealth(5);
-
-	//controls
-	//up = sf::Keyboard::W;
-	//down = sf::Keyboard::S;
-	//left = sf::Keyboard::A;
-	//right = sf::Keyboard::D;
+	windowWidth = static_cast<float>(rm->getWindowWidth());
+	windowHeight = static_cast<float>(rm->getWindowHeight());
 
 	up = sf::Keyboard::Up;
 	down = sf::Keyboard::Down;
@@ -83,6 +79,11 @@ void Player::boundToWindow(ResourceManager * rm)
 	}
 }
 
+int Player::getScore() const
+{
+	return score;
+}
+
 void Player::updateObject(sf::Time delta)
 {
 	engageMove(delta);
@@ -90,7 +91,9 @@ void Player::updateObject(sf::Time delta)
 	if (weapon->getTimeLeft() <= 0 && isShooting) {
 		shoot();
 	}
+	setAnimation();
 	animator->update(delta);
+	updateScore(delta);
 }
 
 void Player::moveObject()
@@ -100,6 +103,7 @@ void Player::moveObject()
 
 void Player::takeDamage()
 {
+	score -= 1000;
 	addToHealth(-1);
 	if (getHealth() <= 0) {
 		setIsAlive(false);
@@ -108,10 +112,6 @@ void Player::takeDamage()
 
 void Player::onKeyDown(sf::Keyboard::Key key)
 {
-	if (key == sf::Keyboard::Return) {
-		std::cout << getPosition().x << "    " << getPosition().y << std::endl;
-	}
-
 	if (key == up) {
 		goalVelY = -speed;
 	}
@@ -125,7 +125,7 @@ void Player::onKeyDown(sf::Keyboard::Key key)
 	else if (key == left) {
 		goalVelX = -speed;
 	}
-	setAnimation();
+
 	if (key == sf::Keyboard::Space) {
 		isShooting = true;
 	}
@@ -154,7 +154,6 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 	else if (key == right && sf::Keyboard::isKeyPressed(left)) {
 		goalVelX = -speed;
 	}
-	setAnimation();
 	if (key == sf::Keyboard::Space) {
 		isShooting = false;
 	}
@@ -162,7 +161,7 @@ void Player::onKeyUp(sf::Keyboard::Key key)
 
 void Player::engageMove(sf::Time delta)
 {
-	velY = lerpMove(goalVelY, velY, (float)delta.asMicroseconds());
+	velY = lerpMove(goalVelY, velY, (float)delta.asMicroseconds()); //Medvetet val att göra det till asMicroseconds istället för asSeconds
 	velX = lerpMove(goalVelX, velX, (float)delta.asMicroseconds());
 	move();
 }
@@ -200,6 +199,46 @@ void Player::setAnimation()
 {
 	if (velX == 0 && velY == 0) {
 		animator->setAnimation(IDLE, false);
+	}	
+	else if (this->getPosition().y > (windowHeight / 2.f)) {
+		if (velX > 0) {
+			animator->setAnimation(TURN_RIGHT, false);
+		}
+		else if (velX < 0) {
+			animator->setAnimation(TURN_LEFT, false);
+		}
+	}
+	else if (this->getPosition().y < (windowHeight / 2.f)) {
+		if (velX > 0) {
+			animator->setAnimation(TURN_LEFT, false);
+		}
+		else if (velX < 0) {
+			animator->setAnimation(TURN_RIGHT, false);
+		}
 	}
 
+	if (this->getPosition().x < (windowWidth / 2)) {
+		if (velY < 0) {
+			animator->setAnimation(TURN_LEFT, false);
+		}
+		else if (velY > 0) {
+			animator->setAnimation(TURN_RIGHT, false);
+		}
+	}
+	else if (this->getPosition().x > (windowWidth / 2)) {
+		if (velY < 0) {
+			animator->setAnimation(TURN_RIGHT, false);
+		}
+		else if (velY > 0) {
+			animator->setAnimation(TURN_LEFT, false);
+		}
+	}
+}
+
+void Player::updateScore(sf::Time delta)
+{
+	float scoreY = static_cast<float>(abs(velY) * delta.asSeconds());
+	float scoreX = static_cast<float>(abs(velX) * delta.asSeconds());
+	float newScore = ((scoreX + scoreY) / 2)*35;
+	score += static_cast<int>(newScore);
 }

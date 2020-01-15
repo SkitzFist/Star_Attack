@@ -1,18 +1,27 @@
 #include "MenuState.h"
 #include "PlayState.h"
+#include <fstream>
 
 MenuState::MenuState(ResourceManager* rm) :
 	GameState(rm)
 {
 	//config
 	float space = 50.f;
+	sf::Vector2f higeScoreTextPos{
+		static_cast<float>(rm->getWindowWidth() / 2.f - 80.f),
+		static_cast<float>(rm->getWindowHeight() / 3.f)
+	};
 
 	//setup
-	playBox = new Box(rm->getFont(), "play", static_cast<float>(rm->getWindowWidth() / 2), static_cast<float>(rm->getWindowHeight() / 2));
-	exitBox = new Box(rm->getFont(), "exit", static_cast<float>(rm->getWindowWidth() / 2), static_cast<float>((rm->getWindowHeight() / 2) + space));
-
+	playBox = new Box(rm->getFont(), "Play", static_cast<float>(rm->getWindowWidth() / 2), static_cast<float>(rm->getWindowHeight() / 2));
+	exitBox = new Box(rm->getFont(), "Exit", static_cast<float>(rm->getWindowWidth() / 2), static_cast<float>((rm->getWindowHeight() / 2) + space));
 	currentBox = MenuState::boxes::play;
 	playBox->markBox();
+
+	highScoreText.setFont(*rm->getFont());
+	highScoreText.setPosition(higeScoreTextPos);
+	highscore = getHighScore();
+	highScoreText.setString("Best: " + std::to_string(highscore));
 }
 
 
@@ -61,6 +70,20 @@ void MenuState::render(sf::RenderWindow & window) const
 {
 	playBox->render(window);
 	exitBox->render(window);
+	window.draw(highScoreText);
+}
+
+int MenuState::getHighScore() const
+{
+	int value = 0;
+	std::ifstream inFile;
+	inFile.open(rm->getHighScorePath());
+	if (!inFile.fail()) {
+		inFile >> value;
+	}
+	inFile.close();
+
+	return value;
 }
 
 void MenuState::switchBox()

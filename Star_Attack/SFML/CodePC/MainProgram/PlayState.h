@@ -11,6 +11,7 @@ class PlayState :
 public:
 	PlayState(ResourceManager* rm);
 	virtual ~PlayState();
+	int getScore() const;
 
 	// Inherited via GameState
 	virtual GameState* handleEvent(const sf::Event & event) override;
@@ -24,5 +25,10 @@ private:
 	BulletHandler* enemyBh;
 	Collision collision;
 	GameState* state;
+
+	sf::Text scoreText;
+
+	bool isHighScore();
+	void saveHighScore();
 };
 

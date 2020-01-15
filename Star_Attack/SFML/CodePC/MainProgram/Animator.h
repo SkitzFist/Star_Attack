@@ -21,4 +21,3 @@ private:
 	int maxWidth;
 	int maxHeight;
 };
-

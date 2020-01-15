@@ -21,7 +21,6 @@ Game::Game():
 	currentState = new MenuState(rm);
 }
 
-
 Game::~Game()
 {
 	delete rm;

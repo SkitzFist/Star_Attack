@@ -23,10 +23,12 @@ private:
 	sf::Text text;
 	Box* playBox;
 	Box* exitBox;
-
 	boxes currentBox;
-private:
 
+	int highscore;
+	sf::Text highScoreText;
+private:
+	int getHighScore() const;
 	void switchBox();
 };
 

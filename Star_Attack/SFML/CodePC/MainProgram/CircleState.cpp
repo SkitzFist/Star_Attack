@@ -8,7 +8,7 @@ CircleState::CircleState(ResourceManager* rm, BulletHandler* bh) :
 	//Config:
 	pos = {
 		static_cast<float>(rm->getWindowWidth() / 2.f),
-		static_cast<float>(rm->getWindowHeight() / 2.f)
+		static_cast<float>((rm->getWindowHeight() / 2.f))
 	};
 	timeBetweenShots = 0.8f;
 	nrOfAngles = 5;
@@ -48,6 +48,9 @@ EnemyState * CircleState::update(sf::Time delta)
 		updateHealthBar();
 		currentHealthRadius = healthRadius;
 	}
+	if (currentHealthRadius > rm->getWindowWidth() / 2) {
+		state = nullptr;
+	}
 
 	return state;
 }
@@ -55,38 +58,15 @@ EnemyState * CircleState::update(sf::Time delta)
 void CircleState::fire()
 {
 	currentWeapon->fire(pos);
-
-	//sf::Vector2f p1{
-	//	250.f,
-	//	100.f
-	//};
-	//currentWeapon->fire(p1);
-	//sf::Vector2f p2{
-	//	static_cast<float>(rm->getWindowWidth() - 250.f),
-	//	100.f
-	//};
-	//currentWeapon->fire(p2);
-	//sf::Vector2f p3{
-	//250.f,
-	//static_cast<float>(rm->getWindowHeight() - 100.f)
-	//};
-	//currentWeapon->fire(p3);
-	//sf::Vector2f p4{
-	//static_cast<float>(rm->getWindowWidth() - 250.f),
-	//static_cast<float>(rm->getWindowHeight() - 100.f)
-	//};
-	//currentWeapon->fire(p4);
-	
 }
 
 void CircleState::takeDamage()
 {
-
 	if (healthInc % 2 == 0) {
-		++healthRadius;
+		healthRadius += 1;
 		healthInc = 0;
 	}
-	
+
 	--health;
 	if (health <= 0) {
 		
@@ -100,10 +80,7 @@ void CircleState::takeDamage()
 		timeBetweenShots -= 0.015f;
 		if (timeBetweenShots <= 0.05) {
 			timeBetweenShots = 1.2f;
-			static int count = 0;
-			std::cout << ++count << std::endl;
 		}
-
 
 		currentWeapon = new CircleWeapon(timeBetweenShots, rm, bh, true);
 		currentWeapon->Setup(pos, nrOfAngles);
